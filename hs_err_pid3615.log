@@ -1,0 +1,826 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 49807360 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2726), pid=3615, tid=140618797496064
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_51-b13) (build 1.7.0_51-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.51-b03 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fe464132000):  VMThread [stack: 0x00007fe45d693000,0x00007fe45d794000] [id=3625]
+
+Stack: [0x00007fe45d693000,0x00007fe45d794000],  sp=0x00007fe45d792230,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x992f4a]  VMError::report_and_die()+0x2ea
+V  [libjvm.so+0x4931ab]  report_vm_out_of_memory(char const*, int, unsigned long, char const*)+0x9b
+V  [libjvm.so+0x81338e]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0xfe
+V  [libjvm.so+0x81383f]  os::Linux::commit_memory_impl(char*, unsigned long, unsigned long, bool)+0x4f
+V  [libjvm.so+0x813a2c]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xc
+V  [libjvm.so+0x80daea]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x87fcd3]  PSVirtualSpace::expand_by(unsigned long)+0x53
+V  [libjvm.so+0x86f2e0]  PSOldGen::expand(unsigned long)+0x170
+V  [libjvm.so+0x86f4eb]  PSOldGen::resize(unsigned long)+0x1cb
+V  [libjvm.so+0x8780f0]  PSParallelCompact::invoke_no_policy(bool)+0x970
+V  [libjvm.so+0x87df7d]  PSScavenge::invoke()+0x1ad
+V  [libjvm.so+0x834f10]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x70
+V  [libjvm.so+0x9947e7]  VM_ParallelGCFailedAllocation::doit()+0x97
+V  [libjvm.so+0x99bc15]  VM_Operation::evaluate()+0x55
+V  [libjvm.so+0x99a04a]  VMThread::evaluate_operation(VM_Operation*)+0xba
+V  [libjvm.so+0x99a3ce]  VMThread::loop()+0x1ce
+V  [libjvm.so+0x99a840]  VMThread::run()+0x70
+V  [libjvm.so+0x815538]  java_start(Thread*)+0x108
+
+VM_Operation (0x00007fe46b312ef0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fe46400b800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fe46566f000 JavaThread "FileSystemWatcher: files=#19 cl=groovy.lang.GroovyClassLoader@798b28c7" daemon [_thread_blocked, id=3688, stack(0x00007fe437518000,0x00007fe437619000)]
+  0x00007fe464dcc000 JavaThread "Synchronizer (Spring UAA/1.0.1)" daemon [_thread_blocked, id=3677, stack(0x00007fe437619000,0x00007fe43771a000)]
+  0x00007fe464ced000 JavaThread "Timer-0" daemon [_thread_blocked, id=3676, stack(0x00007fe437b8d000,0x00007fe437c8e000)]
+  0x00007fe4641d0000 JavaThread "Service Thread" daemon [_thread_blocked, id=3634, stack(0x00007fe45c8d9000,0x00007fe45c9da000)]
+  0x00007fe4641c0800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=3633, stack(0x00007fe45c9da000,0x00007fe45cadb000)]
+  0x00007fe4641bf000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=3632, stack(0x00007fe45cadb000,0x00007fe45cbdc000)]
+  0x00007fe464157000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3631, stack(0x00007fe45ccaf000,0x00007fe45cdb0000)]
+  0x00007fe464138800 JavaThread "Finalizer" daemon [_thread_blocked, id=3627, stack(0x00007fe45d491000,0x00007fe45d592000)]
+  0x00007fe464134000 JavaThread "Reference Handler" daemon [_thread_blocked, id=3626, stack(0x00007fe45d592000,0x00007fe45d693000)]
+  0x00007fe46400b800 JavaThread "main" [_thread_blocked, id=3617, stack(0x00007fe46b233000,0x00007fe46b334000)]
+
+Other Threads:
+=>0x00007fe464132000 VMThread [stack: 0x00007fe45d693000,0x00007fe45d794000] [id=3625]
+  0x00007fe4641da000 WatcherThread [stack: 0x00007fe45c7d8000,0x00007fe45c8d9000] [id=3635]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fe4640074c0] ExpandHeap_lock - owner thread: 0x00007fe464132000
+[0x00007fe464007b40] Threads_lock - owner thread: 0x00007fe464132000
+[0x00007fe464008040] Heap_lock - owner thread: 0x00007fe46400b800
+
+Heap
+ PSYoungGen      total 221184K, used 0K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 180224K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fb000000)
+  from space 40960K, 0% used [0x00000000fb000000,0x00000000fb000000,0x00000000fd800000)
+  to   space 40960K, 0% used [0x00000000fd800000,0x00000000fd800000,0x0000000100000000)
+ ParOldGen       total 75264K, used 59506K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 79% used [0x00000000d0000000,0x00000000d3a1c890,0x00000000d4980000)
+ PSPermGen       total 50688K, used 37538K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 74% used [0x00000000c0000000,0x00000000c24a8ae0,0x00000000c3180000)
+
+Card table byte_map: [0x00007fe46812f000,0x00007fe468330000] byte_map_base: 0x00007fe467b2f000
+
+Polling page: 0x00007fe46b34a000
+
+Code Cache  [0x00007fe461000000, 0x00007fe4617a0000, 0x00007fe464000000)
+ total_blobs=2081 nmethods=1490 adapters=543 free_code_cache=41607Kb largest_free_block=42392512
+
+Compilation events (10 events):
+Event: 118,239 Thread 0x00007fe4641bf000 1665             java.util.regex.Pattern$BmpCharProperty::match (50 bytes)
+Event: 118,351 Thread 0x00007fe4641bf000 nmethod 1665 0x00007fe46161cf50 code [0x00007fe46161d0c0, 0x00007fe46161d2f8]
+Event: 121,254 Thread 0x00007fe4641c0800 1666             org.codehaus.groovy.ast.stmt.IfStatement::getElseBlock (5 bytes)
+Event: 121,254 Thread 0x00007fe4641bf000 1667             org.codehaus.groovy.ast.stmt.IfStatement::getIfBlock (5 bytes)
+Event: 121,254 Thread 0x00007fe4641bf000 nmethod 1667 0x00007fe46161d610 code [0x00007fe46161d740, 0x00007fe46161d798]
+Event: 121,254 Thread 0x00007fe4641c0800 nmethod 1666 0x00007fe461693d90 code [0x00007fe461693ec0, 0x00007fe461693f18]
+Event: 121,254 Thread 0x00007fe4641c0800 1668             org.codehaus.groovy.ast.stmt.IfStatement::getBooleanExpression (5 bytes)
+Event: 121,254 Thread 0x00007fe4641bf000 1669             org.codehaus.groovy.ast.stmt.IfStatement::visit (8 bytes)
+Event: 121,254 Thread 0x00007fe4641c0800 nmethod 1668 0x00007fe461658990 code [0x00007fe461658ac0, 0x00007fe461658b18]
+Event: 121,255 Thread 0x00007fe4641bf000 nmethod 1669 0x00007fe461656fd0 code [0x00007fe461657120, 0x00007fe461657198]
+
+GC Heap History (10 events):
+Event: 57,725 GC heap after
+Heap after GC invocations=21 (full 2):
+ PSYoungGen      total 235520K, used 17304K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 218112K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fd500000)
+  from space 17408K, 99% used [0x00000000fd500000,0x00000000fe5e61b8,0x00000000fe600000)
+  to   space 24064K, 0% used [0x00000000fe880000,0x00000000fe880000,0x0000000100000000)
+ ParOldGen       total 75264K, used 29957K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 39% used [0x00000000d0000000,0x00000000d1d41510,0x00000000d4980000)
+ PSPermGen       total 50688K, used 31987K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 63% used [0x00000000c0000000,0x00000000c1f3cd40,0x00000000c3180000)
+}
+Event: 59,692 GC heap before
+{Heap before GC invocations=22 (full 2):
+ PSYoungGen      total 235520K, used 235416K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 218112K, 100% used [0x00000000f0000000,0x00000000fd500000,0x00000000fd500000)
+  from space 17408K, 99% used [0x00000000fd500000,0x00000000fe5e61b8,0x00000000fe600000)
+  to   space 24064K, 0% used [0x00000000fe880000,0x00000000fe880000,0x0000000100000000)
+ ParOldGen       total 75264K, used 29957K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 39% used [0x00000000d0000000,0x00000000d1d41510,0x00000000d4980000)
+ PSPermGen       total 50688K, used 32694K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 64% used [0x00000000c0000000,0x00000000c1fed9f0,0x00000000c3180000)
+Event: 59,715 GC heap after
+Heap after GC invocations=22 (full 2):
+ PSYoungGen      total 235008K, used 18600K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 210944K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fce00000)
+  from space 24064K, 77% used [0x00000000fe880000,0x00000000ffaaa098,0x0000000100000000)
+  to   space 25600K, 0% used [0x00000000fce00000,0x00000000fce00000,0x00000000fe700000)
+ ParOldGen       total 75264K, used 29957K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 39% used [0x00000000d0000000,0x00000000d1d41510,0x00000000d4980000)
+ PSPermGen       total 50688K, used 32694K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 64% used [0x00000000c0000000,0x00000000c1fed9f0,0x00000000c3180000)
+}
+Event: 83,032 GC heap before
+{Heap before GC invocations=23 (full 2):
+ PSYoungGen      total 235008K, used 229544K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 210944K, 100% used [0x00000000f0000000,0x00000000fce00000,0x00000000fce00000)
+  from space 24064K, 77% used [0x00000000fe880000,0x00000000ffaaa098,0x0000000100000000)
+  to   space 25600K, 0% used [0x00000000fce00000,0x00000000fce00000,0x00000000fe700000)
+ ParOldGen       total 75264K, used 29957K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 39% used [0x00000000d0000000,0x00000000d1d41510,0x00000000d4980000)
+ PSPermGen       total 50688K, used 36048K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 71% used [0x00000000c0000000,0x00000000c23343c8,0x00000000c3180000)
+Event: 83,078 GC heap after
+Heap after GC invocations=23 (full 2):
+ PSYoungGen      total 236544K, used 25574K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 210944K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fce00000)
+  from space 25600K, 99% used [0x00000000fce00000,0x00000000fe6f9958,0x00000000fe700000)
+  to   space 25600K, 0% used [0x00000000fe700000,0x00000000fe700000,0x0000000100000000)
+ ParOldGen       total 75264K, used 47494K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 63% used [0x00000000d0000000,0x00000000d2e618e0,0x00000000d4980000)
+ PSPermGen       total 50688K, used 36048K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 71% used [0x00000000c0000000,0x00000000c23343c8,0x00000000c3180000)
+}
+Event: 97,666 GC heap before
+{Heap before GC invocations=24 (full 2):
+ PSYoungGen      total 236544K, used 236518K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 210944K, 100% used [0x00000000f0000000,0x00000000fce00000,0x00000000fce00000)
+  from space 25600K, 99% used [0x00000000fce00000,0x00000000fe6f9958,0x00000000fe700000)
+  to   space 25600K, 0% used [0x00000000fe700000,0x00000000fe700000,0x0000000100000000)
+ ParOldGen       total 75264K, used 47494K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 63% used [0x00000000d0000000,0x00000000d2e618e0,0x00000000d4980000)
+ PSPermGen       total 50688K, used 36946K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 72% used [0x00000000c0000000,0x00000000c24148c0,0x00000000c3180000)
+Event: 98,653 GC heap after
+Heap after GC invocations=24 (full 2):
+ PSYoungGen      total 205824K, used 25590K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 180224K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fb000000)
+  from space 25600K, 99% used [0x00000000fe700000,0x00000000ffffdb00,0x0000000100000000)
+  to   space 40960K, 0% used [0x00000000fb000000,0x00000000fb000000,0x00000000fd800000)
+ ParOldGen       total 75264K, used 55807K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 74% used [0x00000000d0000000,0x00000000d367fef8,0x00000000d4980000)
+ PSPermGen       total 50688K, used 36946K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 72% used [0x00000000c0000000,0x00000000c24148c0,0x00000000c3180000)
+}
+Event: 138,206 GC heap before
+{Heap before GC invocations=25 (full 2):
+ PSYoungGen      total 205824K, used 199704K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 180224K, 96% used [0x00000000f0000000,0x00000000faa08548,0x00000000fb000000)
+  from space 25600K, 99% used [0x00000000fe700000,0x00000000ffffdb00,0x0000000100000000)
+  to   space 40960K, 0% used [0x00000000fb000000,0x00000000fb000000,0x00000000fd800000)
+ ParOldGen       total 75264K, used 55807K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 74% used [0x00000000d0000000,0x00000000d367fef8,0x00000000d4980000)
+ PSPermGen       total 50688K, used 37547K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 74% used [0x00000000c0000000,0x00000000c24aafa8,0x00000000c3180000)
+Event: 143,103 GC heap after
+Heap after GC invocations=25 (full 2):
+ PSYoungGen      total 221184K, used 21684K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 180224K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fb000000)
+  from space 40960K, 52% used [0x00000000fb000000,0x00000000fc52d070,0x00000000fd800000)
+  to   space 40960K, 0% used [0x00000000fd800000,0x00000000fd800000,0x0000000100000000)
+ ParOldGen       total 75264K, used 63067K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 83% used [0x00000000d0000000,0x00000000d3d96dd8,0x00000000d4980000)
+ PSPermGen       total 50688K, used 37547K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 74% used [0x00000000c0000000,0x00000000c24aafa8,0x00000000c3180000)
+}
+Event: 144,160 GC heap before
+{Heap before GC invocations=26 (full 3):
+ PSYoungGen      total 221184K, used 21684K [0x00000000f0000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 180224K, 0% used [0x00000000f0000000,0x00000000f0000000,0x00000000fb000000)
+  from space 40960K, 52% used [0x00000000fb000000,0x00000000fc52d070,0x00000000fd800000)
+  to   space 40960K, 0% used [0x00000000fd800000,0x00000000fd800000,0x0000000100000000)
+ ParOldGen       total 75264K, used 63067K [0x00000000d0000000, 0x00000000d4980000, 0x00000000f0000000)
+  object space 75264K, 83% used [0x00000000d0000000,0x00000000d3d96dd8,0x00000000d4980000)
+ PSPermGen       total 50688K, used 37547K [0x00000000c0000000, 0x00000000c3180000, 0x00000000d0000000)
+  object space 50688K, 74% used [0x00000000c0000000,0x00000000c24aafa8,0x00000000c3180000)
+
+Deoptimization events (10 events):
+Event: 95,322 Thread 0x00007fe46400b800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fe4611f9fac method=sl.org.objectweb.asm.ClassReader.accept(Lsl/org/objectweb/asm/ClassVisitor;[Lsl/org/objectweb/asm/Attribute;I)V @ 722
+Event: 95,325 Thread 0x00007fe46400b800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fe4611f9fac method=sl.org.objectweb.asm.ClassReader.accept(Lsl/org/objectweb/asm/ClassVisitor;[Lsl/org/objectweb/asm/Attribute;I)V @ 722
+Event: 95,500 Thread 0x00007fe46400b800 Uncommon trap: reason=unreached action=reinterpret pc=0x00007fe4615ae3c0 method=org.codehaus.groovy.classgen.VariableScopeVisitor.findClassMember(Lorg/codehaus/groovy/ast/ClassNode;Ljava/lang/String;)Lorg/codehaus/groovy/ast/Variable; @ 210
+Event: 95,741 Thread 0x00007fe46400b800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fe4616bd64c method=org.codehaus.groovy.control.ResolveVisitor.transformVariableExpression(Lorg/codehaus/groovy/ast/expr/VariableExpression;)Lorg/codehaus/groovy/ast/expr/Expression; @ 11
+Event: 107,833 Thread 0x00007fe46400b800 Uncommon trap: reason=unreached action=reinterpret pc=0x00007fe4610818b0 method=org.springsource.loaded.ri.ReflectiveInterceptor.getRType(Ljava/lang/Class;)Lorg/springsource/loaded/ReloadableType; @ 125
+Event: 112,311 Thread 0x00007fe46400b800 Uncommon trap: reason=null_assert action=make_not_entrant pc=0x00007fe461779194 method=sl.org.objectweb.asm.ClassReader.accept(Lsl/org/objectweb/asm/ClassVisitor;[Lsl/org/objectweb/asm/Attribute;I)V @ 819
+Event: 117,799 Thread 0x00007fe46400b800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fe46140e7d4 method=java.util.regex.Pattern$Branch.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 50
+Event: 117,799 Thread 0x00007fe46400b800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fe46140e7d4 method=java.util.regex.Pattern$Branch.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 50
+Event: 134,089 Thread 0x00007fe46400b800 Uncommon trap: reason=unreached action=reinterpret pc=0x00007fe461457500 method=org.springsource.loaded.ri.ReflectiveInterceptor.jlClassGetModifiers(Ljava/lang/Class;)I @ 6
+Event: 134,142 Thread 0x00007fe46400b800 Uncommon trap: reason=unreached action=reinterpret pc=0x00007fe4614b6228 method=org.springsource.loaded.ri.ReflectiveInterceptor.jlClassGetModifiers(Ljava/lang/Class;)I @ 6
+
+Internal exceptions (10 events):
+Event: 123,581 Thread 0x00007fe46400b800 Threw 0x00000000f9179fe8 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 123,581 Thread 0x00007fe46400b800 Threw 0x00000000f917cd90 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 123,582 Thread 0x00007fe46400b800 Threw 0x00000000f917ff88 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,187 Thread 0x00007fe46400b800 Threw 0x00000000fa7f15f8 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,188 Thread 0x00007fe46400b800 Threw 0x00000000fa7ff418 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,189 Thread 0x00007fe46400b800 Threw 0x00000000fa801ef0 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,189 Thread 0x00007fe46400b800 Threw 0x00000000fa804c70 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,666 Thread 0x00007fe46400b800 Threw 0x00000000fa82c8f0 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,666 Thread 0x00007fe46400b800 Threw 0x00000000fa82f3a8 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 134,666 Thread 0x00007fe46400b800 Threw 0x00000000fa832100 at /HUDSON/workspace/7u-2-build-linux-amd64@2/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+
+Events (10 events):
+Event: 134,142 Thread 0x00007fe46400b800 Uncommon trap: trap_request=0xffffffad fr.pc=0x00007fe4614b6228
+Event: 134,142 Thread 0x00007fe46400b800 DEOPT PACKING pc=0x00007fe4614b6228 sp=0x00007fe46b3166f0
+Event: 134,187 Thread 0x00007fe46400b800 DEOPT UNPACKING pc=0x00007fe461039045 sp=0x00007fe46b3165b8 mode 2
+Event: 134,188 loading class 0x00007fe4656b96e0
+Event: 134,188 loading class 0x00007fe4656b96e0 done
+Event: 134,666 loading class 0x00007fe4656b9890
+Event: 134,666 loading class 0x00007fe4656b9890 done
+Event: 135,134 loading class 0x00007fe46428a720
+Event: 135,134 loading class 0x00007fe46428a720 done
+Event: 137,646 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 07:00 150371                             /home/natalia/Software/jdk1.7.0_51/bin/java
+00600000-00601000 rw-p 00000000 07:00 150371                             /home/natalia/Software/jdk1.7.0_51/bin/java
+024f9000-0251a000 rw-p 00000000 00:00 0                                  [heap]
+c0000000-c3180000 rw-p 00000000 00:00 0 
+c3180000-d0000000 rw-p 00000000 00:00 0 
+d0000000-d4980000 rw-p 00000000 00:00 0 
+d7900000-dd100000 ---p 00000000 00:00 0 
+dd100000-f0000000 rw-p 00000000 00:00 0 
+f0000000-100000000 rw-p 00000000 00:00 0 
+7fe418000000-7fe418021000 rw-p 00000000 00:00 0 
+7fe418021000-7fe41c000000 ---p 00000000 00:00 0 
+7fe41c000000-7fe41c087000 rw-p 00000000 00:00 0 
+7fe41c087000-7fe420000000 ---p 00000000 00:00 0 
+7fe420000000-7fe420021000 rw-p 00000000 00:00 0 
+7fe420021000-7fe424000000 ---p 00000000 00:00 0 
+7fe424000000-7fe424021000 rw-p 00000000 00:00 0 
+7fe424021000-7fe428000000 ---p 00000000 00:00 0 
+7fe428000000-7fe428021000 rw-p 00000000 00:00 0 
+7fe428021000-7fe42c000000 ---p 00000000 00:00 0 
+7fe42c000000-7fe42c021000 rw-p 00000000 00:00 0 
+7fe42c021000-7fe430000000 ---p 00000000 00:00 0 
+7fe430000000-7fe433e7e000 rw-p 00000000 00:00 0 
+7fe433e7e000-7fe434000000 ---p 00000000 00:00 0 
+7fe436ede000-7fe436ef6000 r-xp 00000000 07:00 659741                     /lib/x86_64-linux-gnu/libresolv-2.15.so
+7fe436ef6000-7fe4370f6000 ---p 00018000 07:00 659741                     /lib/x86_64-linux-gnu/libresolv-2.15.so
+7fe4370f6000-7fe4370f7000 r--p 00018000 07:00 659741                     /lib/x86_64-linux-gnu/libresolv-2.15.so
+7fe4370f7000-7fe4370f8000 rw-p 00019000 07:00 659741                     /lib/x86_64-linux-gnu/libresolv-2.15.so
+7fe4370f8000-7fe4370fa000 rw-p 00000000 00:00 0 
+7fe4370fa000-7fe437101000 r-xp 00000000 07:00 659702                     /lib/x86_64-linux-gnu/libnss_dns-2.15.so
+7fe437101000-7fe437300000 ---p 00007000 07:00 659702                     /lib/x86_64-linux-gnu/libnss_dns-2.15.so
+7fe437300000-7fe437301000 r--p 00006000 07:00 659702                     /lib/x86_64-linux-gnu/libnss_dns-2.15.so
+7fe437301000-7fe437302000 rw-p 00007000 07:00 659702                     /lib/x86_64-linux-gnu/libnss_dns-2.15.so
+7fe437302000-7fe437304000 r-xp 00000000 07:00 656609                     /lib/libnss_mdns4_minimal.so.2
+7fe437304000-7fe437503000 ---p 00002000 07:00 656609                     /lib/libnss_mdns4_minimal.so.2
+7fe437503000-7fe437504000 r--p 00001000 07:00 656609                     /lib/libnss_mdns4_minimal.so.2
+7fe437504000-7fe437505000 rw-p 00002000 07:00 656609                     /lib/libnss_mdns4_minimal.so.2
+7fe437518000-7fe43751b000 ---p 00000000 00:00 0 
+7fe43751b000-7fe437619000 rw-p 00000000 00:00 0                          [stack:3688]
+7fe437619000-7fe43761c000 ---p 00000000 00:00 0 
+7fe43761c000-7fe43771a000 rw-p 00000000 00:00 0                          [stack:3677]
+7fe43771a000-7fe43772f000 r-xp 00000000 07:00 659664                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fe43772f000-7fe43792e000 ---p 00015000 07:00 659664                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fe43792e000-7fe43792f000 r--p 00014000 07:00 659664                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fe43792f000-7fe437930000 rw-p 00015000 07:00 659664                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fe43793f000-7fe437943000 r--s 0002d000 07:00 525618                     /home/natalia/Software/jdk1.7.0_51/jre/lib/ext/sunjce_provider.jar
+7fe437943000-7fe437975000 r-xp 00000000 07:00 291512                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libsunec.so
+7fe437975000-7fe437b74000 ---p 00032000 07:00 291512                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libsunec.so
+7fe437b74000-7fe437b7a000 rw-p 00031000 07:00 291512                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libsunec.so
+7fe437b7a000-7fe437b8a000 rw-p 00000000 00:00 0 
+7fe437b8a000-7fe437b8b000 r--s 00003000 07:00 525624                     /home/natalia/Software/jdk1.7.0_51/jre/lib/ext/sunec.jar
+7fe437b8b000-7fe437b8d000 r--s 00019000 07:00 291554                     /home/natalia/Software/jdk1.7.0_51/jre/lib/jce.jar
+7fe437b8d000-7fe437b90000 ---p 00000000 00:00 0 
+7fe437b90000-7fe437c8e000 rw-p 00000000 00:00 0                          [stack:3676]
+7fe437c8e000-7fe437cb3000 r--s 00172000 07:00 292795                     /home/natalia/.gvm/grails/2.3.7/lib/org.bouncycastle/bcprov-jdk15/jars/bcprov-jdk15-1.45.jar
+7fe437cb3000-7fe437cb8000 r--s 00024000 07:00 292789                     /home/natalia/.gvm/grails/2.3.7/lib/org.bouncycastle/bcpg-jdk15/jars/bcpg-jdk15-1.45.jar
+7fe437cb8000-7fe437cb9000 r--s 00003000 07:00 151416                     /home/natalia/.gvm/grails/2.3.7/lib/com.googlecode.json-simple/json-simple/jars/json-simple-1.1.jar
+7fe437cb9000-7fe437cc1000 r--s 0007b000 07:00 151403                     /home/natalia/.gvm/grails/2.3.7/lib/com.google.protobuf/protobuf-java/jars/protobuf-java-2.5.0.jar
+7fe437cc1000-7fe437cc4000 r--s 0001a000 07:00 535376                     /home/natalia/.gvm/grails/2.3.7/lib/org.springframework.uaa/org.springframework.uaa.client/jars/org.springframework.uaa.client-1.0.1.RELEASE.jar
+7fe437cc5000-7fe437cd0000 r--s 0037c000 07:00 291409                     /home/natalia/Software/jdk1.7.0_51/jre/lib/charsets.jar
+7fe437cd0000-7fe437ce1000 r--s 000d2000 07:00 660726                     /home/natalia/.m2/repository/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar
+7fe437ce1000-7fe437ce4000 r--s 0000f000 07:00 660724                     /home/natalia/.m2/repository/org/hibernate/hibernate-commons-annotations/3.2.0.Final/hibernate-commons-annotations-3.2.0.Final.jar
+7fe437ce4000-7fe437cee000 r--s 0005f000 07:00 660722                     /home/natalia/.m2/repository/org/hibernate/hibernate-entitymanager/3.6.10.Final/hibernate-entitymanager-3.6.10.Final.jar
+7fe437cee000-7fe437cf5000 r--s 00040000 07:00 660720                     /home/natalia/.m2/repository/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.jar
+7fe437cf5000-7fe437cf8000 r--s 00009000 07:00 660718                     /home/natalia/.m2/repository/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar
+7fe437cf8000-7fe437d2a000 r--s 002c9000 07:00 660717                     /home/natalia/.m2/repository/org/hibernate/hibernate-core/3.6.10.Final/hibernate-core-3.6.10.Final.jar
+7fe437d2a000-7fe437d33000 r--s 00056000 07:00 660714                     /home/natalia/.m2/repository/org/springframework/spring-orm/3.2.8.RELEASE/spring-orm-3.2.8.RELEASE.jar
+7fe437d33000-7fe437d38000 r--s 00048000 07:00 660712                     /home/natalia/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar
+7fe437d38000-7fe437d3a000 r--s 00009000 07:00 660710                     /home/natalia/.m2/repository/org/grails/grails-datastore-gorm-plugin-support/3.0.2.RELEASE/grails-datastore-gorm-plugin-support-3.0.2.RELEASE.jar
+7fe437d3a000-7fe437d3f000 r--s 00068000 07:00 660708                     /home/natalia/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar
+7fe437d3f000-7fe437d43000 r--s 00035000 07:00 660706                     /home/natalia/.m2/repository/org/grails/grails-datastore-gorm-hibernate-core/3.0.2.RELEASE/grails-datastore-gorm-hibernate-core-3.0.2.RELEASE.jar
+7fe437d43000-7fe437d4a000 r--s 0004a000 07:00 660704                     /home/natalia/.m2/repository/org/grails/grails-datastore-gorm-hibernate/3.0.2.RELEASE/grails-datastore-gorm-hibernate-3.0.2.RELEASE.jar
+7fe437d4a000-7fe437d51000 r--s 00040000 07:00 660702                     /home/natalia/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar
+7fe437d51000-7fe437d67000 r--s 000e6000 07:00 660700                     /home/natalia/.m2/repository/net/sf/ehcache/ehcache-core/2.4.8/ehcache-core-2.4.8.jar
+7fe437d67000-7fe437d68000 r--s 00002000 07:00 660698                     /home/natalia/.m2/repository/org/hibernate/hibernate-ehcache/3.6.10.Final/hibernate-ehcache-3.6.10.Final.jar
+7fe437d68000-7fe437d6c000 r--s 0002c000 07:00 660598                     /home/natalia/.m2/repository/org/springframework/spring-expression/3.2.8.RELEASE/spring-expression-3.2.8.RELEASE.jar
+7fe437d6c000-7fe437d76000 r--s 0004a000 07:00 663029                     /home/natalia/.m2/repository/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar
+7fe437d76000-7fe437d81000 r--s 0004d000 07:00 663027                     /home/natalia/.m2/repository/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar
+7fe437d81000-7fe437d84000 r--s 0008f000 07:00 660696                     /home/natalia/.m2/repository/org/grails/grails-resources/2.3.7/grails-resources-2.3.7.jar
+7fe437d84000-7fe437d8d000 r--s 0006f000 07:00 660694                     /home/natalia/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar
+7fe437d8d000-7fe437d9a000 r--s 00174000 07:00 538512                     /home/natalia/.m2/repository/com/h2database/h2/1.3.173/h2-1.3.173.jar
+7fe437d9a000-7fe437d9f000 r--s 00047000 07:00 660692                     /home/natalia/.m2/repository/org/grails/grails-test/2.3.7/grails-test-2.3.7.jar
+7fe437d9f000-7fe437da0000 r--s 00003000 07:00 660690                     /home/natalia/.m2/repository/javax/transaction/jta/1.1/jta-1.1.jar
+7fe437da0000-7fe437da9000 r--s 000a5000 07:00 660683                     /home/natalia/.m2/repository/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar
+7fe437da9000-7fe437db3000 r--s 00051000 07:00 404478                     /home/natalia/.m2/repository/org/grails/grails-datastore-core/3.0.2.RELEASE/grails-datastore-core-3.0.2.RELEASE.jar
+7fe437db3000-7fe437db6000 r--s 00018000 07:00 404476                     /home/natalia/.m2/repository/org/grails/grails-plugin-domain-class/2.3.7/grails-plugin-domain-class-2.3.7.jar
+7fe437db6000-7fe437dbc000 r--s 0004c000 07:00 404474                     /home/natalia/.m2/repository/org/grails/grails-datastore-simple/3.0.2.RELEASE/grails-datastore-simple-3.0.2.RELEASE.jar
+7fe437dbc000-7fe437dc5000 r--s 0007a000 07:00 538510                     /home/natalia/.m2/repository/org/grails/grails-datastore-gorm/3.0.2.RELEASE/grails-datastore-gorm-3.0.2.RELEASE.jar
+7fe437dc5000-7fe437dc9000 r--s 00021000 07:00 660686                     /home/natalia/.m2/repository/org/grails/grails-plugin-converters/2.3.7/grails-plugin-converters-2.3.7.jar
+7fe437dc9000-7fe437dd4000 r--s 00065000 07:00 660684                     /home/natalia/.m2/repository/org/springframework/spring-test/3.2.8.RELEASE/spring-test-3.2.8.RELEASE.jar
+7fe437dd4000-7fe437dd6000 r--s 0000c000 07:00 660682                     /home/natalia/.m2/repository/org/grails/grails-plugin-mimetypes/2.3.7/grails-plugin-mimetypes-2.3.7.jar
+7fe437dd6000-7fe437ddc000 r--s 00066000 07:00 660680                     /home/natalia/.m2/repository/org/grails/grails-plugin-testing/2.3.7/grails-plugin-testing-2.3.7.jar
+7fe437ddc000-7fe437dde000 r--s 00011000 07:00 404472                     /home/natalia/.m2/repository/org/grails/grails-async/2.3.7/grails-async-2.3.7.jar
+7fe437dde000-7fe437ddf000 r--s 0000e000 07:00 660678                     /home/natalia/.m2/repository/org/codehaus/jsr166-mirror/jsr166y/1.7.0/jsr166y-1.7.0.jar
+7fe437ddf000-7fe437de5000 r--s 00037000 07:00 660676                     /home/natalia/.m2/repository/org/multiverse/multiverse-core/0.7.0/multiverse-core-0.7.0.jar
+7fe437de5000-7fe437e01000 r--s 00134000 07:00 538508                     /home/natalia/.m2/repository/org/codehaus/gpars/gpars/1.1.0/gpars-1.1.0.jar
+7fe437e01000-7fe437e03000 r--s 0000d000 07:00 660675                     /home/natalia/.m2/repository/org/grails/grails-plugin-async/2.3.7/grails-plugin-async-2.3.7.jar
+7fe437e03000-7fe437e06000 r--s 0000b000 07:00 660672                     /home/natalia/.m2/repository/com/googlecode/concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.3.1/concurrentlinkedhashmap-lru-1.3.1.jar
+7fe437e06000-7fe437e0a000 r--s 00027000 07:00 660670                     /home/natalia/.m2/repository/commons-io/commons-io/2.2/commons-io-2.2.jar
+7fe437e0a000-7fe437e0d000 r--s 00025000 07:00 660668                     /home/natalia/.m2/repository/org/grails/grails-plugin-url-mappings/2.3.7/grails-plugin-url-mappings-2.3.7.jar
+7fe437e0d000-7fe437e0f000 r--s 00005000 07:00 660666                     /home/natalia/.m2/repository/org/grails/grails-plugin-servlets/2.3.7/grails-plugin-servlets-2.3.7.jar
+7fe437e0f000-7fe437e17000 r--s 00034000 07:00 660664                     /home/natalia/.m2/repository/org/springframework/spring-tx/3.2.8.RELEASE/spring-tx-3.2.8.RELEASE.jar
+7fe437e17000-7fe437e18000 r--s 00009000 07:00 660662                     /home/natalia/.m2/repository/org/grails/grails-plugin-services/2.3.7/grails-plugin-services-2.3.7.jar
+7fe437e18000-7fe437e19000 r--s 00001000 07:00 538506                     /home/natalia/.m2/repository/org/slf4j/jul-to-slf4j/1.7.5/jul-to-slf4j-1.7.5.jar
+7fe437e19000-7fe437e1b000 r--s 0000d000 07:00 660660                     /home/natalia/.m2/repository/org/grails/grails-plugin-log4j/2.3.7/grails-plugin-log4j-2.3.7.jar
+7fe437e1b000-7fe437e21000 r--s 00033000 07:00 660658                     /home/natalia/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+7fe437e21000-7fe437e24000 r--s 00016000 07:00 660656                     /home/natalia/.m2/repository/org/grails/grails-plugin-codecs/2.3.7/grails-plugin-codecs-2.3.7.jar
+7fe437e24000-7fe437e25000 r--s 00000000 07:00 660654                     /home/natalia/.m2/repository/org/grails/grails-logging/2.3.7/grails-logging-2.3.7.jar
+7fe437e25000-7fe437e2c000 r--s 00062000 07:00 660652                     /home/natalia/.m2/repository/org/grails/grails-plugin-gsp/2.3.7/grails-plugin-gsp-2.3.7.jar
+7fe437e2c000-7fe437e2e000 r--s 0000b000 07:00 660651                     /home/natalia/.m2/repository/org/grails/grails-plugin-filters/2.3.7/grails-plugin-filters-2.3.7.jar
+7fe437e2e000-7fe437e2f000 r--s 00005000 07:00 660648                     /home/natalia/.m2/repository/org/grails/grails-plugin-i18n/2.3.7/grails-plugin-i18n-2.3.7.jar
+7fe437e2f000-7fe437e32000 r--s 0001f000 07:00 660646                     /home/natalia/.m2/repository/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar
+7fe437e32000-7fe437e34000 r--s 00000000 07:00 660644                     /home/natalia/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar
+7fe437e34000-7fe437e46000 r--s 000c4000 07:00 660643                     /home/natalia/.m2/repository/org/springframework/spring-core/3.2.8.RELEASE/spring-core-3.2.8.RELEASE.jar
+7fe437e46000-7fe437e4b000 r--s 00017000 07:00 660640                     /home/natalia/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar
+7fe437e4b000-7fe437e57000 r--s 0008a000 07:00 660638                     /home/natalia/.m2/repository/org/springframework/spring-beans/3.2.8.RELEASE/spring-beans-3.2.8.RELEASE.jar
+7fe437e57000-7fe437e58000 r--s 0000a000 07:00 660636                     /home/natalia/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar
+7fe437e58000-7fe437e66000 r--s 0008c000 07:00 660634                     /home/natalia/.m2/repository/org/springframework/spring-web/3.2.8.RELEASE/spring-web-3.2.8.RELEASE.jar
+7fe437e66000-7fe437e68000 r--s 0000e000 07:00 660632                     /home/natalia/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar
+7fe437e68000-7fe437e7b000 r--s 000e9000 07:00 404470                     /home/natalia/.m2/repository/org/grails/grails-core/2.3.7/grails-core-2.3.7.jar
+7fe437e7b000-7fe437e7c000 r--s 00005000 07:00 660630                     /home/natalia/.m2/repository/org/grails/grails-plugin-databinding/2.3.7/grails-plugin-databinding-2.3.7.jar
+7fe437e7c000-7fe437e7e000 r--s 00008000 07:00 660628                     /home/natalia/.m2/repository/org/grails/grails-plugin-validation/2.3.7/grails-plugin-validation-2.3.7.jar
+7fe437e7e000-7fe437e82000 r--s 00028000 07:00 660626                     /home/natalia/.m2/repository/org/grails/grails-plugin-controllers/2.3.7/grails-plugin-controllers-2.3.7.jar
+7fe437e82000-7fe437e87000 r--s 0002a000 07:00 660624                     /home/natalia/.m2/repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+7fe437e87000-7fe437e90000 r--s 0004a000 07:00 660622                     /home/natalia/.m2/repository/org/springframework/spring-aop/3.2.8.RELEASE/spring-aop-3.2.8.RELEASE.jar
+7fe437e90000-7fe437ea5000 r--s 000bf000 07:00 660620                     /home/natalia/.m2/repository/org/springframework/spring-context/3.2.8.RELEASE/spring-context-3.2.8.RELEASE.jar
+7fe437ea5000-7fe437eaf000 r--s 0005a000 07:00 660618                     /home/natalia/.m2/repository/org/springframework/spring-jdbc/3.2.8.RELEASE/spring-jdbc-3.2.8.RELEASE.jar
+7fe437eaf000-7fe437eb1000 r--s 00008000 07:00 660616                     /home/natalia/.m2/repository/org/apache/tomcat/tomcat-juli/7.0.50/tomcat-juli-7.0.50.jar
+7fe437eb1000-7fe437eb3000 r--s 0001d000 07:00 660614                     /home/natalia/.m2/repository/org/apache/tomcat/tomcat-jdbc/7.0.50/tomcat-jdbc-7.0.50.jar
+7fe437eb3000-7fe437eb5000 r--s 00013000 07:00 660612                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.50/tomcat-embed-logging-log4j-7.0.50.jar
+7fe437eb5000-7fe437eb7000 r--s 0000d000 07:00 660610                     /home/natalia/.m2/repository/org/grails/grails-plugin-datasource/2.3.7/grails-plugin-datasource-2.3.7.jar
+7fe437eb7000-7fe437eba000 r--s 00011000 07:00 538504                     /home/natalia/.m2/repository/org/grails/grails-databinding/2.3.7/grails-databinding-2.3.7.jar
+7fe437eba000-7fe437ebc000 r--s 00009000 07:00 404468                     /home/natalia/.m2/repository/org/grails/grails-spring/2.3.7/grails-spring-2.3.7.jar
+7fe437ebc000-7fe437ec1000 r--s 00034000 07:00 660608                     /home/natalia/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar
+7fe437ec1000-7fe437ec4000 r--s 00009000 07:00 660606                     /home/natalia/.m2/repository/org/objenesis/objenesis/1.4/objenesis-1.4.jar
+7fe437ec4000-7fe437ec7000 r--s 00019000 07:00 660604                     /home/natalia/.m2/repository/commons-el/commons-el/1.0/commons-el-1.0.jar
+7fe437ec7000-7fe437ec9000 r--s 00004000 07:00 660602                     /home/natalia/.m2/repository/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar
+7fe437ec9000-7fe437ecb000 r--s 00005000 07:00 660600                     /home/natalia/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+7fe437ecb000-7fe437ed7000 r--s 00090000 07:00 660597                     /home/natalia/.m2/repository/org/springframework/spring-webmvc/3.2.8.RELEASE/spring-webmvc-3.2.8.RELEASE.jar
+7fe437ed7000-7fe437ed9000 r--s 0000b000 07:00 660594                     /home/natalia/.m2/repository/org/springframework/spring-aspects/3.2.8.RELEASE/spring-aspects-3.2.8.RELEASE.jar
+7fe437ed9000-7fe437ede000 r--s 00019000 07:00 660593                     /home/natalia/.m2/repository/org/aspectj/aspectjrt/1.7.4/aspectjrt-1.7.4.jar
+7fe437ede000-7fe437ee4000 r--s 00027000 07:00 660590                     /home/natalia/.m2/repository/opensymphony/sitemesh/2.4/sitemesh-2.4.jar
+7fe437ee4000-7fe437ee6000 r--s 0000f000 07:00 660588                     /home/natalia/.m2/repository/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1.jar
+7fe437ee6000-7fe437efe000 r--s 001ac000 07:00 660586                     /home/natalia/.m2/repository/org/aspectj/aspectjweaver/1.7.4/aspectjweaver-1.7.4.jar
+7fe437efe000-7fe437f02000 r--s 0001c000 07:00 660584                     /home/natalia/.m2/repository/org/springframework/spring-context-support/3.2.8.RELEASE/spring-context-support-3.2.8.RELEASE.jar
+7fe437f02000-7fe437f0b000 r--s 00058000 07:00 660582                     /home/natalia/.m2/repository/taglibs/standard/1.1.2/standard-1.1.2.jar
+7fe437f0b000-7fe437f19000 r--s 0007f000 07:00 660580                     /home/natalia/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
+7fe437f19000-7fe437f29000 r--s 000eb000 07:00 404466                     /home/natalia/.m2/repository/org/grails/grails-web/2.3.7/grails-web-2.3.7.jar
+7fe437f29000-7fe437f2c000 r--s 00035000 07:00 404464                     /home/natalia/.m2/repository/org/grails/grails-plugin-rest/2.3.7/grails-plugin-rest-2.3.7.jar
+7fe437f2c000-7fe437f8f000 r--s 005b3000 07:00 660578                     /home/natalia/.m2/repository/org/codehaus/groovy/groovy-all/2.1.9/groovy-all-2.1.9.jar
+7fe437f8f000-7fe437f92000 r--s 00012000 07:00 660576                     /home/natalia/.m2/repository/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar
+7fe437f92000-7fe437fb4000 r--s 00267000 07:00 660069                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/7.0.52/tomcat-embed-core-7.0.52.jar
+7fe437fb4000-7fe437fc4000 r--s 0019c000 07:00 660067                     /home/natalia/.m2/repository/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar
+7fe437fc4000-7fe437fc9000 r--s 0002f000 07:00 660065                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.52/tomcat-embed-websocket-7.0.52.jar
+7fe437fc9000-7fe437fcb000 r--s 00013000 07:00 660063                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.52/tomcat-embed-logging-log4j-7.0.52.jar
+7fe437fcb000-7fe437fcf000 r--s 00025000 07:00 660061                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/7.0.52/tomcat-embed-el-7.0.52.jar
+7fe437fcf000-7fe437fd8000 r--s 0009f000 07:00 660059                     /home/natalia/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.52/tomcat-embed-jasper-7.0.52.jar
+7fe437fd8000-7fe437fda000 r--s 0000c000 07:00 660057                     /home/natalia/.m2/repository/org/apache/tomcat/tomcat-catalina-ant/7.0.52/tomcat-catalina-ant-7.0.52.jar
+7fe437fda000-7fe437fdf000 r--s 00041000 07:00 660055                     /home/natalia/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+7fe437fdf000-7fe438000000 r--s 0015a000 07:00 660053                     /home/natalia/.m2/repository/bouncycastle/bcprov-jdk14/138/bcprov-jdk14-138.jar
+7fe438000000-7fe438021000 rw-p 00000000 00:00 0 
+7fe438021000-7fe43c000000 ---p 00000000 00:00 0 
+7fe43c000000-7fe43f923000 rw-p 00000000 00:00 0 
+7fe43f923000-7fe440000000 ---p 00000000 00:00 0 
+7fe440000000-7fe440021000 rw-p 00000000 00:00 0 
+7fe440021000-7fe444000000 ---p 00000000 00:00 0 
+7fe444000000-7fe444021000 rw-p 00000000 00:00 0 
+7fe444021000-7fe448000000 ---p 00000000 00:00 0 
+7fe448000000-7fe448048000 rw-p 00000000 00:00 0 
+7fe448048000-7fe44c000000 ---p 00000000 00:00 0 
+7fe44c000000-7fe44c283000 rw-p 00000000 00:00 0 
+7fe44c283000-7fe450000000 ---p 00000000 00:00 0 
+7fe450000000-7fe450044000 rw-p 00000000 00:00 0 
+7fe450044000-7fe454000000 ---p 00000000 00:00 0 
+7fe454000000-7fe454043000 rw-p 00000000 00:00 0 
+7fe454043000-7fe458000000 ---p 00000000 00:00 0 
+7fe458000000-7fe458021000 rw-p 00000000 00:00 0 
+7fe458021000-7fe45c000000 ---p 00000000 00:00 0 
+7fe45c002000-7fe45c003000 rw-p 00000000 00:00 0 
+7fe45c003000-7fe45c007000 r--s 000f7000 07:00 525623                     /home/natalia/Software/jdk1.7.0_51/jre/lib/ext/localedata.jar
+7fe45c007000-7fe45c011000 r--s 00250000 07:00 291432                     /home/natalia/Software/jdk1.7.0_51/jre/lib/resources.jar
+7fe45c011000-7fe45c015000 r--s 0002b000 07:00 660051                     /home/natalia/.m2/repository/bouncycastle/bcmail-jdk14/138/bcmail-jdk14-138.jar
+7fe45c015000-7fe45c022000 r--s 0011c000 07:00 660049                     /home/natalia/.m2/repository/com/lowagie/itext/2.0.8/itext-2.0.8.jar
+7fe45c022000-7fe45c026000 r--s 0001a000 07:00 404373                     /home/natalia/.m2/repository/org/grails/grails-gdoc-engine/1.0.1/grails-gdoc-engine-1.0.1.jar
+7fe45c026000-7fe45c02c000 r--s 00039000 07:00 660047                     /home/natalia/.m2/repository/org/yaml/snakeyaml/1.8/snakeyaml-1.8.jar
+7fe45c02c000-7fe45c03d000 r--s 000f7000 07:00 660045                     /home/natalia/.m2/repository/org/xhtmlrenderer/core-renderer/R8/core-renderer-R8.jar
+7fe45c03d000-7fe45c040000 r--s 0003f000 07:00 404371                     /home/natalia/.m2/repository/org/grails/grails-docs/2.3.7/grails-docs-2.3.7.jar
+7fe45c040000-7fe45c046000 r--s 00036000 07:00 660043                     /home/natalia/.m2/repository/junit/junit/4.11/junit-4.11.jar
+7fe45c046000-7fe45c048000 r--s 00009000 07:00 538449                     /home/natalia/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+7fe45c048000-7fe45c054000 r--s 00070000 07:00 538447                     /home/natalia/.m2/repository/org/spockframework/spock-core/0.7-groovy-2.0/spock-core-0.7-groovy-2.0.jar
+7fe45c054000-7fe45c05c000 r--s 000ac000 07:00 404369                     /home/natalia/.m2/repository/org/grails/grails-scripts/2.3.7/grails-scripts-2.3.7.jar
+7fe45c05c000-7fe45c05e000 r--s 0001a000 07:00 538445                     /home/natalia/.m2/repository/org/fusesource/jansi/jansi/1.11/jansi-1.11.jar
+7fe45c05e000-7fe45c073000 r--s 00116000 07:00 538443                     /home/natalia/.m2/repository/org/apache/ivy/ivy/2.3.0/ivy-2.3.0.jar
+7fe45c073000-7fe45c078000 r--s 00050000 07:00 538441                     /home/natalia/.m2/repository/org/codehaus/gant/gant_groovy1.8/1.9.6/gant_groovy1.8-1.9.6.jar
+7fe45c078000-7fe45c07b000 r--s 00018000 07:00 538439                     /home/natalia/.m2/repository/org/apache/ant/ant-junit/1.8.4/ant-junit-1.8.4.jar
+7fe45c07b000-7fe45c07f000 r--s 000dc000 07:00 538437                     /home/natalia/.m2/repository/net/java/dev/jna/jna/4.0.0/jna-4.0.0.jar
+7fe45c07f000-7fe45c080000 r--s 00001000 07:00 538435                     /home/natalia/.m2/repository/org/apache/ant/ant-trax/1.7.1/ant-trax-1.7.1.jar
+7fe45c080000-7fe45c081000 r--s 00004000 07:00 538433                     /home/natalia/.m2/repository/org/apache/ant/ant-launcher/1.8.4/ant-launcher-1.8.4.jar
+7fe45c081000-7fe45c084000 r--s 00030000 07:00 538431                     /home/natalia/.m2/repository/jline/jline/2.11/jline-2.11.jar
+7fe45c084000-7fe45c0a2000 r--s 001bd000 07:00 538429                     /home/natalia/.m2/repository/org/apache/ant/ant/1.8.4/ant-1.8.4.jar
+7fe45c0a2000-7fe45c0a4000 r--s 00005000 07:00 538426                     /home/natalia/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar
+7fe45c0a4000-7fe45c0a6000 r--s 00003000 07:00 538427                     /home/natalia/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.5/jcl-over-slf4j-1.7.5.jar
+7fe45c0a6000-7fe45c0b2000 r--s 000c4000 07:00 404367                     /home/natalia/.m2/repository/org/grails/grails-bootstrap/2.3.7/grails-bootstrap-2.3.7.jar
+7fe45c0b2000-7fe45c0b5000 r--s 00041000 07:00 404365                     /home/natalia/.m2/repository/xalan/serializer/2.7.1/serializer-2.7.1.jar
+7fe45c0b5000-7fe45c0c5000 r-xp 00000000 07:00 291490                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnio.so
+7fe45c0c5000-7fe45c2c5000 ---p 00010000 07:00 291490                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnio.so
+7fe45c2c5000-7fe45c2c6000 rw-p 00010000 07:00 291490                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnio.so
+7fe45c2c6000-7fe45c2c8000 r--s 00000000 07:00 151354                     /home/natalia/.gvm/grails/2.3.7/lib/aopalliance/aopalliance/jars/aopalliance-1.0.jar
+7fe45c2c8000-7fe45c2cb000 r--s 00006000 07:00 151384                     /home/natalia/.gvm/grails/2.3.7/lib/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar
+7fe45c2cb000-7fe45c2cc000 r--s 00000000 07:00 151510                     /home/natalia/.gvm/grails/2.3.7/lib/javax.inject/javax.inject/jars/javax.inject-1.jar
+7fe45c2cc000-7fe45c2cd000 r--s 00001000 07:00 151496                     /home/natalia/.gvm/grails/2.3.7/lib/javax.annotation/jsr250-api/jars/jsr250-api-1.0.jar
+7fe45c2cd000-7fe45c2cf000 r--s 00002000 07:00 535271                     /home/natalia/.gvm/grails/2.3.7/lib/org.sonatype.plexus/plexus-cipher/jars/plexus-cipher-1.4.jar
+7fe45c2cf000-7fe45c2d5000 r--s 00033000 07:00 151447                     /home/natalia/.gvm/grails/2.3.7/lib/commons-codec/commons-codec/jars/commons-codec-1.6.jar
+7fe45c2d5000-7fe45c2db000 r--s 00032000 07:00 151593                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.httpcomponents/httpcore/jars/httpcore-4.2.4.jar
+7fe45c2db000-7fe45c2dd000 r--s 0000a000 07:00 292828                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.plexus/plexus-classworlds/jars/plexus-classworlds-2.4.jar
+7fe45c2dd000-7fe45c2e3000 r--s 00042000 07:00 403712                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.sisu/org.eclipse.sisu.inject/jars/org.eclipse.sisu.inject-0.0.0.M5.jar
+7fe45c2e3000-7fe45c2eb000 r--s 00050000 07:00 535283                     /home/natalia/.gvm/grails/2.3.7/lib/org.sonatype.sisu/sisu-guice/jars/sisu-guice-3.1.0-no_aop.jar
+7fe45c2eb000-7fe45c309000 r--s 00151000 07:00 151396                     /home/natalia/.gvm/grails/2.3.7/lib/com.google.guava/guava/jars/guava-10.0.1.jar
+7fe45c309000-7fe45c30c000 r--s 00008000 07:00 151503                     /home/natalia/.gvm/grails/2.3.7/lib/javax.enterprise/cdi-api/jars/cdi-api-1.0.jar
+7fe45c30c000-7fe45c30d000 r--s 00006000 07:00 535277                     /home/natalia/.gvm/grails/2.3.7/lib/org.sonatype.plexus/plexus-sec-dispatcher/jars/plexus-sec-dispatcher-1.3.jar
+7fe45c30d000-7fe45c30f000 r--s 00009000 07:00 292748                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-settings/jars/maven-settings-3.1.1.jar
+7fe45c30f000-7fe45c312000 r--s 0000d000 07:00 292840                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.plexus/plexus-interpolation/jars/plexus-interpolation-1.19.jar
+7fe45c312000-7fe45c316000 r--s 00037000 07:00 292846                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.plexus/plexus-utils/jars/plexus-utils-3.0.15.jar
+7fe45c316000-7fe45c318000 r--s 00000000 07:00 292834                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.plexus/plexus-component-annotations/jars/plexus-component-annotations-1.5.5.jar
+7fe45c318000-7fe45c31a000 r--s 00005000 07:00 292742                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-repository-metadata/jars/maven-repository-metadata-3.1.1.jar
+7fe45c31a000-7fe45c31e000 r--s 00023000 07:00 292736                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-model-builder/jars/maven-model-builder-3.1.1.jar
+7fe45c31e000-7fe45c320000 r--s 00024000 07:00 292730                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-model/jars/maven-model-3.1.1.jar
+7fe45c320000-7fe45c329000 r--s 00061000 07:00 151587                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.httpcomponents/httpclient/jars/httpclient-4.2.5.jar
+7fe45c329000-7fe45c32b000 r--s 00006000 07:00 403687                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-spi/jars/aether-spi-0.9.0.M3.jar
+7fe45c32b000-7fe45c32c000 r--s 00002000 07:00 535264                     /home/natalia/.gvm/grails/2.3.7/lib/org.slf4j/slf4j-simple/jars/slf4j-simple-1.7.5.jar
+7fe45c32c000-7fe45c332000 r--s 0002a000 07:00 403718                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.sisu/org.eclipse.sisu.plexus/jars/org.eclipse.sisu.plexus-0.0.0.M5.jar
+7fe45c332000-7fe45c335000 r--s 00008000 07:00 292754                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-settings-builder/jars/maven-settings-builder-3.1.1.jar
+7fe45c335000-7fe45c337000 r--s 0000d000 07:00 292724                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.maven/maven-aether-provider/jars/maven-aether-provider-3.1.1.jar
+7fe45c337000-7fe45c339000 r--s 00001000 07:00 403693                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-transport-file/jars/aether-transport-file-0.9.0.M3.jar
+7fe45c339000-7fe45c33a000 r--s 00007000 07:00 403699                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-transport-http/jars/aether-transport-http-0.9.0.M3.jar
+7fe45c33a000-7fe45c33c000 r--s 00005000 07:00 403675                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-connector-file/jars/aether-connector-file-0.9.0.M2.jar
+7fe45c33c000-7fe45c340000 r--s 00025000 07:00 403681                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-impl/jars/aether-impl-0.9.0.M3.jar
+7fe45c340000-7fe45c344000 r--s 0001f000 07:00 403705                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-util/jars/aether-util-0.9.0.M3.jar
+7fe45c344000-7fe45c35a000 r-xp 00000000 07:00 291495                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnet.so
+7fe45c35a000-7fe45c55a000 ---p 00016000 07:00 291495                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnet.so
+7fe45c55a000-7fe45c55b000 rw-p 00016000 07:00 291495                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libnet.so
+7fe45c55b000-7fe45c580000 r--p 00000000 07:00 801324                     /usr/share/locale-langpack/es/LC_MESSAGES/libc.mo
+7fe45c580000-7fe45c581000 r-xp 00000000 07:00 155223                     /tmp/libjansi-64-6294571648793335579.so
+7fe45c581000-7fe45c780000 ---p 00001000 07:00 155223                     /tmp/libjansi-64-6294571648793335579.so
+7fe45c780000-7fe45c781000 rw-p 00000000 07:00 155223                     /tmp/libjansi-64-6294571648793335579.so
+7fe45c781000-7fe45c784000 ---p 00000000 00:00 0 
+7fe45c784000-7fe45c7ba000 rw-p 00000000 00:00 0 
+7fe45c7ba000-7fe45c7d8000 r--s 001bd000 07:00 151568                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.ant/ant/jars/ant-1.8.4.jar
+7fe45c7d8000-7fe45c7d9000 ---p 00000000 00:00 0 
+7fe45c7d9000-7fe45c8d9000 rw-p 00000000 00:00 0                          [stack:3635]
+7fe45c8d9000-7fe45c8dc000 ---p 00000000 00:00 0 
+7fe45c8dc000-7fe45c9da000 rw-p 00000000 00:00 0                          [stack:3634]
+7fe45c9da000-7fe45c9dd000 ---p 00000000 00:00 0 
+7fe45c9dd000-7fe45cadb000 rw-p 00000000 00:00 0                          [stack:3633]
+7fe45cadb000-7fe45cade000 ---p 00000000 00:00 0 
+7fe45cade000-7fe45cbdc000 rw-p 00000000 00:00 0                          [stack:3632]
+7fe45cbdc000-7fe45cbe2000 r--s 0005c000 07:00 535370                     /home/natalia/.gvm/grails/2.3.7/lib/org.springframework/springloaded/jars/springloaded-1.1.5.RELEASE.jar
+7fe45cbe2000-7fe45cc4c000 r--s 00e1b000 07:00 150428                     /home/natalia/Software/jdk1.7.0_51/lib/tools.jar
+7fe45cc4c000-7fe45ccaf000 r--s 005b3000 07:00 292814                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-2.1.9.jar
+7fe45ccaf000-7fe45ccb2000 ---p 00000000 00:00 0 
+7fe45ccb2000-7fe45cdb0000 rw-p 00000000 00:00 0                          [stack:3631]
+7fe45cdb0000-7fe45d491000 r--p 00000000 07:00 919945                     /usr/lib/locale/locale-archive
+7fe45d491000-7fe45d494000 ---p 00000000 00:00 0 
+7fe45d494000-7fe45d592000 rw-p 00000000 00:00 0                          [stack:3627]
+7fe45d592000-7fe45d595000 ---p 00000000 00:00 0 
+7fe45d595000-7fe45d693000 rw-p 00000000 00:00 0                          [stack:3626]
+7fe45d693000-7fe45d694000 ---p 00000000 00:00 0 
+7fe45d694000-7fe45e6ee000 rw-p 00000000 00:00 0                          [stack:3625]
+7fe45e6ee000-7fe45e8ab000 r--s 039bf000 07:00 291542                     /home/natalia/Software/jdk1.7.0_51/jre/lib/rt.jar
+7fe45e8ab000-7fe460b7c000 rw-p 00000000 00:00 0 
+7fe460b7c000-7fe460b7d000 ---p 00000000 00:00 0 
+7fe460b7d000-7fe460c7d000 rw-p 00000000 00:00 0                          [stack:3623]
+7fe460c7d000-7fe460c7e000 ---p 00000000 00:00 0 
+7fe460c7e000-7fe460d7e000 rw-p 00000000 00:00 0                          [stack:3622]
+7fe460d7e000-7fe460d7f000 ---p 00000000 00:00 0 
+7fe460d7f000-7fe460e7f000 rw-p 00000000 00:00 0                          [stack:3621]
+7fe460e7f000-7fe460e80000 ---p 00000000 00:00 0 
+7fe460e80000-7fe460f99000 rw-p 00000000 00:00 0                          [stack:3620]
+7fe460f99000-7fe461000000 rw-p 00000000 00:00 0 
+7fe461000000-7fe4617a0000 rwxp 00000000 00:00 0 
+7fe4617a0000-7fe46572b000 rw-p 00000000 00:00 0 
+7fe46572b000-7fe468000000 ---p 00000000 00:00 0 
+7fe468000000-7fe468001000 r--s 00007000 07:00 403669                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-connector-basic/jars/aether-connector-basic-0.9.0.M3.jar
+7fe468001000-7fe468005000 r--s 0001d000 07:00 403663                     /home/natalia/.gvm/grails/2.3.7/lib/org.eclipse.aether/aether-api/jars/aether-api-0.9.0.M3.jar
+7fe468005000-7fe468007000 r--s 00003000 07:00 535246                     /home/natalia/.gvm/grails/2.3.7/lib/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.5.jar
+7fe468007000-7fe468009000 r--s 00005000 07:00 535258                     /home/natalia/.gvm/grails/2.3.7/lib/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar
+7fe468009000-7fe46800c000 r--s 0001f000 07:00 151846                     /home/natalia/.gvm/grails/2.3.7/dist/grails-aether-2.3.7.jar
+7fe46800c000-7fe46800e000 r--s 00001000 07:00 525622                     /home/natalia/Software/jdk1.7.0_51/jre/lib/ext/dnsns.jar
+7fe46800e000-7fe468015000 r--s 00000000 07:00 131907                     /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7fe468015000-7fe46801a000 r--s 00050000 07:00 292800                     /home/natalia/.gvm/grails/2.3.7/lib/org.codehaus.gant/gant_groovy1.8/jars/gant_groovy1.8-1.9.6.jar
+7fe46801a000-7fe46802f000 r--s 00116000 07:00 151598                     /home/natalia/.gvm/grails/2.3.7/lib/org.apache.ivy/ivy/jars/ivy-2.3.0.jar
+7fe46802f000-7fe468054000 rw-p 00000000 00:00 0 
+7fe468054000-7fe468098000 ---p 00000000 00:00 0 
+7fe468098000-7fe46812f000 rw-p 00000000 00:00 0 
+7fe46812f000-7fe468148000 rw-p 00000000 00:00 0 
+7fe468148000-7fe4681af000 rw-p 00000000 00:00 0 
+7fe4681af000-7fe4681d4000 rw-p 00000000 00:00 0 
+7fe4681d4000-7fe468218000 ---p 00000000 00:00 0 
+7fe468218000-7fe4682af000 rw-p 00000000 00:00 0 
+7fe4682af000-7fe46832f000 rw-p 00000000 00:00 0 
+7fe46832f000-7fe468330000 rw-p 00000000 00:00 0 
+7fe468330000-7fe46834a000 r-xp 00000000 07:00 291532                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libzip.so
+7fe46834a000-7fe46854a000 ---p 0001a000 07:00 291532                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libzip.so
+7fe46854a000-7fe46854b000 rw-p 0001a000 07:00 291532                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libzip.so
+7fe46854b000-7fe468557000 r-xp 00000000 07:00 659704                     /lib/x86_64-linux-gnu/libnss_files-2.15.so
+7fe468557000-7fe468756000 ---p 0000c000 07:00 659704                     /lib/x86_64-linux-gnu/libnss_files-2.15.so
+7fe468756000-7fe468757000 r--p 0000b000 07:00 659704                     /lib/x86_64-linux-gnu/libnss_files-2.15.so
+7fe468757000-7fe468758000 rw-p 0000c000 07:00 659704                     /lib/x86_64-linux-gnu/libnss_files-2.15.so
+7fe468758000-7fe468762000 r-xp 00000000 07:00 659708                     /lib/x86_64-linux-gnu/libnss_nis-2.15.so
+7fe468762000-7fe468962000 ---p 0000a000 07:00 659708                     /lib/x86_64-linux-gnu/libnss_nis-2.15.so
+7fe468962000-7fe468963000 r--p 0000a000 07:00 659708                     /lib/x86_64-linux-gnu/libnss_nis-2.15.so
+7fe468963000-7fe468964000 rw-p 0000b000 07:00 659708                     /lib/x86_64-linux-gnu/libnss_nis-2.15.so
+7fe468964000-7fe46897b000 r-xp 00000000 07:00 659698                     /lib/x86_64-linux-gnu/libnsl-2.15.so
+7fe46897b000-7fe468b7a000 ---p 00017000 07:00 659698                     /lib/x86_64-linux-gnu/libnsl-2.15.so
+7fe468b7a000-7fe468b7b000 r--p 00016000 07:00 659698                     /lib/x86_64-linux-gnu/libnsl-2.15.so
+7fe468b7b000-7fe468b7c000 rw-p 00017000 07:00 659698                     /lib/x86_64-linux-gnu/libnsl-2.15.so
+7fe468b7c000-7fe468b7e000 rw-p 00000000 00:00 0 
+7fe468b7e000-7fe468b86000 r-xp 00000000 07:00 659700                     /lib/x86_64-linux-gnu/libnss_compat-2.15.so
+7fe468b86000-7fe468d85000 ---p 00008000 07:00 659700                     /lib/x86_64-linux-gnu/libnss_compat-2.15.so
+7fe468d85000-7fe468d86000 r--p 00007000 07:00 659700                     /lib/x86_64-linux-gnu/libnss_compat-2.15.so
+7fe468d86000-7fe468d87000 rw-p 00008000 07:00 659700                     /lib/x86_64-linux-gnu/libnss_compat-2.15.so
+7fe468d87000-7fe468d91000 r-xp 00000000 07:00 291494                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libinstrument.so
+7fe468d91000-7fe468f90000 ---p 0000a000 07:00 291494                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libinstrument.so
+7fe468f90000-7fe468f91000 rw-p 00009000 07:00 291494                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libinstrument.so
+7fe468f91000-7fe468fba000 r-xp 00000000 07:00 291522                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libjava.so
+7fe468fba000-7fe4691ba000 ---p 00029000 07:00 291522                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libjava.so
+7fe4691ba000-7fe4691bc000 rw-p 00029000 07:00 291522                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libjava.so
+7fe4691bc000-7fe4691c9000 r-xp 00000000 07:00 291520                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libverify.so
+7fe4691c9000-7fe4693c8000 ---p 0000d000 07:00 291520                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libverify.so
+7fe4693c8000-7fe4693ca000 rw-p 0000c000 07:00 291520                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/libverify.so
+7fe4693ca000-7fe4693d1000 r-xp 00000000 07:00 659743                     /lib/x86_64-linux-gnu/librt-2.15.so
+7fe4693d1000-7fe4695d0000 ---p 00007000 07:00 659743                     /lib/x86_64-linux-gnu/librt-2.15.so
+7fe4695d0000-7fe4695d1000 r--p 00006000 07:00 659743                     /lib/x86_64-linux-gnu/librt-2.15.so
+7fe4695d1000-7fe4695d2000 rw-p 00007000 07:00 659743                     /lib/x86_64-linux-gnu/librt-2.15.so
+7fe4695d2000-7fe4696cd000 r-xp 00000000 07:00 659681                     /lib/x86_64-linux-gnu/libm-2.15.so
+7fe4696cd000-7fe4698cc000 ---p 000fb000 07:00 659681                     /lib/x86_64-linux-gnu/libm-2.15.so
+7fe4698cc000-7fe4698cd000 r--p 000fa000 07:00 659681                     /lib/x86_64-linux-gnu/libm-2.15.so
+7fe4698cd000-7fe4698ce000 rw-p 000fb000 07:00 659681                     /lib/x86_64-linux-gnu/libm-2.15.so
+7fe4698ce000-7fe46a430000 r-xp 00000000 07:00 403270                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/server/libjvm.so
+7fe46a430000-7fe46a630000 ---p 00b62000 07:00 403270                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/server/libjvm.so
+7fe46a630000-7fe46a6f3000 rw-p 00b62000 07:00 403270                     /home/natalia/Software/jdk1.7.0_51/jre/lib/amd64/server/libjvm.so
+7fe46a6f3000-7fe46a734000 rw-p 00000000 00:00 0 
+7fe46a734000-7fe46a8e9000 r-xp 00000000 07:00 659639                     /lib/x86_64-linux-gnu/libc-2.15.so
+7fe46a8e9000-7fe46aae8000 ---p 001b5000 07:00 659639                     /lib/x86_64-linux-gnu/libc-2.15.so
+7fe46aae8000-7fe46aaec000 r--p 001b4000 07:00 659639                     /lib/x86_64-linux-gnu/libc-2.15.so
+7fe46aaec000-7fe46aaee000 rw-p 001b8000 07:00 659639                     /lib/x86_64-linux-gnu/libc-2.15.so
+7fe46aaee000-7fe46aaf3000 rw-p 00000000 00:00 0 
+7fe46aaf3000-7fe46aaf5000 r-xp 00000000 07:00 659654                     /lib/x86_64-linux-gnu/libdl-2.15.so
+7fe46aaf5000-7fe46acf5000 ---p 00002000 07:00 659654                     /lib/x86_64-linux-gnu/libdl-2.15.so
+7fe46acf5000-7fe46acf6000 r--p 00002000 07:00 659654                     /lib/x86_64-linux-gnu/libdl-2.15.so
+7fe46acf6000-7fe46acf7000 rw-p 00003000 07:00 659654                     /lib/x86_64-linux-gnu/libdl-2.15.so
+7fe46acf7000-7fe46ad0d000 r-xp 00000000 07:00 150436                     /home/natalia/Software/jdk1.7.0_51/lib/amd64/jli/libjli.so
+7fe46ad0d000-7fe46af0d000 ---p 00016000 07:00 150436                     /home/natalia/Software/jdk1.7.0_51/lib/amd64/jli/libjli.so
+7fe46af0d000-7fe46af0e000 rw-p 00016000 07:00 150436                     /home/natalia/Software/jdk1.7.0_51/lib/amd64/jli/libjli.so
+7fe46af0e000-7fe46af26000 r-xp 00000000 07:00 659735                     /lib/x86_64-linux-gnu/libpthread-2.15.so
+7fe46af26000-7fe46b125000 ---p 00018000 07:00 659735                     /lib/x86_64-linux-gnu/libpthread-2.15.so
+7fe46b125000-7fe46b126000 r--p 00017000 07:00 659735                     /lib/x86_64-linux-gnu/libpthread-2.15.so
+7fe46b126000-7fe46b127000 rw-p 00018000 07:00 659735                     /lib/x86_64-linux-gnu/libpthread-2.15.so
+7fe46b127000-7fe46b12b000 rw-p 00000000 00:00 0 
+7fe46b12b000-7fe46b14d000 r-xp 00000000 07:00 659617                     /lib/x86_64-linux-gnu/ld-2.15.so
+7fe46b14d000-7fe46b151000 r--s 0008a000 07:00 291421                     /home/natalia/Software/jdk1.7.0_51/jre/lib/jsse.jar
+7fe46b151000-7fe46b153000 r--s 00009000 07:00 151440                     /home/natalia/.gvm/grails/2.3.7/lib/commons-cli/commons-cli/jars/commons-cli-1.2.jar
+7fe46b153000-7fe46b15f000 r--s 000c4000 07:00 151888                     /home/natalia/.gvm/grails/2.3.7/dist/grails-bootstrap-2.3.7.jar
+7fe46b15f000-7fe46b192000 rw-p 00000000 00:00 0 
+7fe46b192000-7fe46b233000 rw-p 00000000 00:00 0 
+7fe46b233000-7fe46b236000 ---p 00000000 00:00 0 
+7fe46b236000-7fe46b338000 rw-p 00000000 00:00 0                          [stack:3617]
+7fe46b338000-7fe46b33c000 r--s 000dc000 07:00 151558                     /home/natalia/.gvm/grails/2.3.7/lib/net.java.dev.jna/jna/jars/jna-4.0.0.jar
+7fe46b33c000-7fe46b33e000 r--s 0001a000 07:00 403723                     /home/natalia/.gvm/grails/2.3.7/lib/org.fusesource.jansi/jansi/jars/jansi-1.11.jar
+7fe46b33e000-7fe46b341000 r--s 00030000 07:00 151541                     /home/natalia/.gvm/grails/2.3.7/lib/jline/jline/jars/jline-2.11.jar
+7fe46b341000-7fe46b349000 rw-s 00000000 07:00 155222                     /tmp/hsperfdata_natalia/3615
+7fe46b349000-7fe46b34a000 rw-p 00000000 00:00 0 
+7fe46b34a000-7fe46b34b000 ---p 00000000 00:00 0 
+7fe46b34b000-7fe46b34d000 rw-p 00000000 00:00 0 
+7fe46b34d000-7fe46b34e000 r--p 00022000 07:00 659617                     /lib/x86_64-linux-gnu/ld-2.15.so
+7fe46b34e000-7fe46b350000 rw-p 00023000 07:00 659617                     /lib/x86_64-linux-gnu/ld-2.15.so
+7fff102f9000-7fff1031b000 rw-p 00000000 00:00 0                          [stack]
+7fff103ff000-7fff10400000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xmx768M -XX:MaxPermSize=256m -Dbase.dir=/home/natalia/eduweb2014 -Djline.terminal=jline.UnsupportedTerminal -Dgrails.home=/home/natalia/.gvm/grails/2.3.7/ -Dgrails.forked.kill.port=34932 -javaagent:/home/natalia/.gvm/grails/2.3.7/lib/org.springframework/springloaded/jars/springloaded-1.1.5.RELEASE.jar -Xverify:none -Dspringloaded=profile=grails;cacheDir=/home/natalia/Documents/workspace-ggts-3.5.0.RELEASE/.metadata/.plugins/org.grails.ide.eclipse.core/2.3.7 -Dfile.encoding=UTF-8 
+java_command: org.codehaus.groovy.grails.cli.support.GrailsStarter --conf /home/natalia/.gvm/grails/2.3.7/conf/groovy-starter.conf --main org.codehaus.groovy.grails.cli.GrailsScriptRunner run-app
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/home/natalia/Software/jdk1.7.0_51
+PATH=/home/natalia/.gvm/vertx/current/bin:/home/natalia/.gvm/springboot/current/bin:/home/natalia/.gvm/lazybones/current/bin:/home/natalia/.gvm/groovyserv/current/bin:/home/natalia/.gvm/groovy/current/bin:/home/natalia/.gvm/griffon/current/bin:/home/natalia/.gvm/grails/current/bin:/home/natalia/.gvm/gradle/current/bin:/home/natalia/.gvm/glide/current/bin:/home/natalia/.gvm/gaiden/current/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/natalia/Software/jdk1.7.0_51/bin
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x993870], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x993870], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x8105b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x8105b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x8105b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x8105b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x811aa0], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x812a10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x812a10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x812a10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x812a10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:wheezy/sid
+
+uname:Linux 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:31:23 UTC 2012 x86_64
+libc:glibc 2.15 NPTL 2.15 
+rlimit: STACK 8192k, CORE 0k, NPROC 29828, NOFILE 4096, AS infinity
+load average:11,14 4,74 2,12
+
+/proc/meminfo:
+MemTotal:        3836464 kB
+MemFree:           99940 kB
+Buffers:            7444 kB
+Cached:           163844 kB
+SwapCached:          424 kB
+Active:          2862904 kB
+Inactive:         686876 kB
+Active(anon):    2858036 kB
+Inactive(anon):   674388 kB
+Active(file):       4868 kB
+Inactive(file):    12488 kB
+Unevictable:       34028 kB
+Mlocked:           31336 kB
+SwapTotal:        262140 kB
+SwapFree:              0 kB
+Dirty:               196 kB
+Writeback:             0 kB
+AnonPages:       3411720 kB
+Mapped:            12876 kB
+Shmem:            145792 kB
+Slab:              57856 kB
+SReclaimable:      28464 kB
+SUnreclaim:        29392 kB
+KernelStack:        4512 kB
+PageTables:        34408 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2180372 kB
+Committed_AS:    6608368 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      356712 kB
+VmallocChunk:   34359367939 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       63928 kB
+DirectMap2M:     2867200 kB
+
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 37 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 37
+model name	: Intel(R) Core(TM) i5 CPU       M 480  @ 2.67GHz
+stepping	: 5
+microcode	: 0x2
+cpu MHz		: 2667.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt lahf_lm ida arat dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 5319.42
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 37
+model name	: Intel(R) Core(TM) i5 CPU       M 480  @ 2.67GHz
+stepping	: 5
+microcode	: 0x2
+cpu MHz		: 1466.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 2
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt lahf_lm ida arat dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 5319.42
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 37
+model name	: Intel(R) Core(TM) i5 CPU       M 480  @ 2.67GHz
+stepping	: 5
+microcode	: 0x2
+cpu MHz		: 1466.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt lahf_lm ida arat dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 5319.42
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 37
+model name	: Intel(R) Core(TM) i5 CPU       M 480  @ 2.67GHz
+stepping	: 5
+microcode	: 0x2
+cpu MHz		: 1733.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 2
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt lahf_lm ida arat dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 5319.42
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3836464k(99940k free), swap 262140k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.51-b03) for linux-amd64 JRE (1.7.0_51-b13), built on Dec 18 2013 18:48:01 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sun Jul  6 18:57:22 2014
+elapsed time: 165 seconds
+
