@@ -2,32 +2,34 @@ package ar.edu.unlam.eduweb
 
 
 import grails.plugin.springsecurity.annotation.Secured
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+@Secured(['ROLE_ALUMNO'])
 @Transactional(readOnly = true)
 class CursoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	
 	
-	@Secured(['ROLE_ALUMNO'])
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Curso.list(params), model:[cursoInstanceCount: Curso.count()]
     }
 	
-	@Secured(['ROLE_ALUMNO'])
+
     def show(Curso cursoInstance) {
         respond cursoInstance
     }
 	
-	@Secured(['ROLE_ALUMNO'])
+
     def create() {
         respond new Curso(params)
     }
 
-	@Secured(['ROLE_ALUMNO'])
+
     @Transactional
     def save(Curso cursoInstance) {
         if (cursoInstance == null) {
@@ -51,12 +53,12 @@ class CursoController {
         }
     }
 
-	@Secured(['ROLE_ALUMNO'])
+
     def edit(Curso cursoInstance) {
         respond cursoInstance
     }
 
-	@Secured(['ROLE_ALUMNO'])
+
     @Transactional
     def update(Curso cursoInstance) {
         if (cursoInstance == null) {
@@ -79,7 +81,7 @@ class CursoController {
             '*'{ respond cursoInstance, [status: OK] }
         }
     }
-	@Secured(['ROLE_ALUMNO'])
+
     @Transactional
     def delete(Curso cursoInstance) {
 
