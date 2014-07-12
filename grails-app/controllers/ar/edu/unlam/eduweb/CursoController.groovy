@@ -16,7 +16,8 @@ class CursoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Curso.list(params), model:[cursoInstanceCount: Curso.count()]
+        respond CursoUsuario.findByUsuario(Usuario.findByUsername('natalia')), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
+			 nuevoUser: CursoUsuario.findByUsuario(Usuario.findByUsername('natalia'))]
     }
 	
 
