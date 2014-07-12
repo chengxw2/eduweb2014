@@ -1,7 +1,7 @@
 package ar.edu.unlam.eduweb
 
-
 import grails.plugin.springsecurity.annotation.Secured
+
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -10,16 +10,16 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class CursoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", index: "GET"]
 	
 	
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond CursoUsuario.findByUsuario(Usuario.findByUsername('natalia')), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
-			 nuevoUser: CursoUsuario.findByUsuario(Usuario.findByUsername('natalia'))]
+		
+        respond CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username)), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
+			 nuevoUser: CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username))]
     }
-	
 
     def show(Curso cursoInstance) {
         respond cursoInstance

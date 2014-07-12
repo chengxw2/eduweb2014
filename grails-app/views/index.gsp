@@ -112,15 +112,16 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<a href="${createLink(controller:'curso', action: 'index')}">Curso </a>
+		    <a href="${createLink(controller:'curso', action: 'index', params:[usuario: 'lucas'])}" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
 			<img src='images/chicos2.png' width='321' height='115'/>
 		</div>
+		
 		<div id="page-body" role="main">
 		     <div class='texto_principal'>
 			 <sec:ifLoggedIn>
-			<h1>Bienvenido</h1>
+			<h1>Bienvenido:</h1>
 			<h1> ${applicationContext.springSecurityService.currentUser.username}</h1>
              </sec:ifLoggedIn>
              <img src='images/computadora2.png' width='321' height='115'/>

@@ -36,6 +36,11 @@
 					
 					</tr>
 				</g:each>
+				
+				<g:each in="${nuevoUser}">
+    <p>Title: ${it.curso.nombre}</p>
+    <p>Author: ${it.usuario.username}</p>
+</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
