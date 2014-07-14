@@ -3,11 +3,10 @@ package ar.edu.unlam.eduweb
 import java.util.Date;
 
 class Comentario {
-	Usuario autorComentario
-	Date fechaComentario
-	String mensajeComentario
-	static belongsTo = TemaForo
+	Date fecha
+	String mensaje
+	static belongsTo = [autor:Usuario, temaForo:TemaForo]
 
-    static constraints = {
+    static constraints = { 
     }
 }

@@ -6,6 +6,7 @@
 #	modified:   .project
 #	modified:   .settings/org.eclipse.core.resources.prefs
 #	modified:   grails-app/conf/Config.groovy
+#	new file:   log.txt
 #	new file:   target-eclipse/classes/ApplicationResources$_run_closure1.class
 #	new file:   target-eclipse/classes/ApplicationResources$_run_closure1_closure2.class
 #	new file:   target-eclipse/classes/ApplicationResources.class
@@ -953,6 +954,7 @@
 #   (use "git add/rm <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
+#	modified:   log.txt
 #	deleted:    target/classes/ApplicationResources$_run_closure1.class
 #	deleted:    target/classes/ApplicationResources$_run_closure1_closure2.class
 #	deleted:    target/classes/ApplicationResources.class
@@ -2111,7 +2113,3 @@
 #	deleted:    target/work/scriptCache/_S2Common_groovy$_run_closure7.class
 #	deleted:    target/work/scriptCache/_S2Common_groovy.class
 #
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	log.txt

@@ -4,13 +4,18 @@ class Usuario {
 
 	transient springSecurityService
 
+	String nombre
+	String apellido
+	String dni
 	String username
 	String password
+	String email
+	
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-	static hasMany = [cursousuarios:CursoUsuario]
+	static hasMany = [cursosUsuario:CursoUsuario, temasForo:TemaForo, comentarios:Comentario, actividades:Actividad]
 
 	static transients = ['springSecurityService']
 
