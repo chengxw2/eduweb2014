@@ -29,18 +29,13 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${cursoInstanceList}" status="i" var="cursoInstance">
+				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${cursoInstance.id}">${fieldValue(bean: cursoInstance, field: "nombre")}</g:link></td>
+						<td><g:link action="show" id="${cursoInstance.curso.nombre}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
 					
 					</tr>
 				</g:each>
-				
-				<g:each in="${nuevoUser}">
-    <p>Title: ${it.curso.nombre}</p>
-    <p>Author: ${it.usuario.username}</p>
-</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
