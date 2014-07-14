@@ -2,7 +2,8 @@ package ar.edu.unlam.eduweb
 
 class Curso {
 	String nombre;
-	static hasMany = [temasforo:TemaForo, cursousuarios:CursoUsuario, eventos: Evento, actividades: Actividad]
+	String descripcion;
+	static hasMany = [temasForo:TemaForo, cursoUsuarios:CursoUsuario, eventos: Evento, actividades: Actividad]
 
     static constraints = {
     }
