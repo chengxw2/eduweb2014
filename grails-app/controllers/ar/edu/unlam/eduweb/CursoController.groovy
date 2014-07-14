@@ -20,6 +20,8 @@ class CursoController {
         respond CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username)), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
 			 nuevoUser: CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username))]
     }
+	
+	
 
     def show(Curso cursoInstance) {
         respond cursoInstance

@@ -8,6 +8,7 @@ class UsuarioRol implements Serializable {
 
 	Usuario usuario
 	Rol rol
+	static belongsTo = [usuario:Usuario, rol:Rol]
 
 	boolean equals(other) {
 		if (!(other instanceof UsuarioRol)) {

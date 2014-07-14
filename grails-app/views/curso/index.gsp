@@ -155,6 +155,7 @@
 				</g:each>
 				</tbody>
 			</table>
+			
 			</div>
 			<div class="pagination">
 				<g:paginate total="${cursoInstanceCount ?: 0}" />
