@@ -159,11 +159,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cursoInstance?.cursousuarios}">
+				<g:if test="${cursoInstance?.cursoUsuarios}">
 				<li class="fieldcontain">
 					<span id="cursousuarios-label" class="property-label"><g:message code="curso.cursousuarios.label" default="Cursousuarios" /></span>
 					
-						<g:each in="${cursoInstance.cursousuarios}" var="c">
+						<g:each in="${cursoInstance.cursoUsuarios}" var="c">
 						<span class="property-value" aria-labelledby="cursousuarios-label"><g:link controller="cursoUsuario" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
@@ -190,11 +190,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cursoInstance?.temasforo}">
+				<g:if test="${cursoInstance?.temasForo}">
 				<li class="fieldcontain">
 					<span id="temasforo-label" class="property-label"><g:message code="curso.temasforo.label" default="Temasforo" /></span>
 					
-						<g:each in="${cursoInstance.temasforo}" var="t">
+						<g:each in="${cursoInstance.temasForo}" var="t">
 						<span class="property-value" aria-labelledby="temasforo-label"><g:link controller="temaForo" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
