@@ -6,8 +6,8 @@ class UsuarioRol implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	Usuario usuario
-	Rol rol
+//	Usuario usuario
+//	Rol rol
 	static belongsTo = [usuario:Usuario, rol:Rol]
 
 	boolean equals(other) {

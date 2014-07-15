@@ -129,6 +129,7 @@
 		
 	</head>
 	<body>
+		${profe} - ${rol} - ${usuarioRol}
 		<a href="#show-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
 		    <a href="${createLink(controller:'curso', action: 'index', params:[usuario: 'lucas'])}" >Curso </a>
