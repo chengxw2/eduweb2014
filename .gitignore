@@ -1,0 +1,7 @@
+.settings
+stacktrace.log
+/*.zip
+/*.log
+/*Db.*
+/target/
+/target-eclipse/
