@@ -132,7 +132,7 @@
 	<body>
 	    <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-		    <a href="${createLink(controller:'curso', action: 'index', params:[usuario: 'lucas'])}" >Curso </a>
+		    <a href="#" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
 				 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>

@@ -129,10 +129,14 @@
 		
 	</head>
 	<body>
-		${profe} - ${rol} - ${usuarioRol}
+		${profe} - ${rol.authority} 
+		<g:each in="${usuarioRol}">
+    <p>Usuario: ${it.usuario.username}</p>
+    <p>Rol: ${it.rol.authority}</p>
+</g:each>
 		<a href="#show-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-		    <a href="${createLink(controller:'curso', action: 'index', params:[usuario: 'lucas'])}" >Curso </a>
+		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
 			 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>

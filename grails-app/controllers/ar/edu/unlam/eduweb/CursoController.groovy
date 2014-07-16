@@ -1,5 +1,6 @@
 package ar.edu.unlam.eduweb
 
+import ar.edu.unlam.eduweb.CursoService
 
 import grails.plugin.springsecurity.annotation.Secured
 
@@ -10,37 +11,23 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class CursoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", index: "GET"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	
 	
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		
-        respond CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username)), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
-			 nuevoUser: CursoUsuario.findAllByUsuario(Usuario.findByUsername(getAuthenticatedUser().username))]
+		def cursoUsuario = new CursoService()
+		respond cursoUsuario.cursosDeUsuario(getAuthenticatedUser().username), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
+			 nuevoUser:cursoUsuario.cursosDeUsuario(getAuthenticatedUser().username)]
     }
 	
 	
 
     def show(Curso cursoInstance) {
-		//1. Buscamos el registro ROLE_PROFESOR
-		def rolProfesor = Rol.findAllByAuthority('ROLE_PROFESOR')
-		
-		//2. Buscamos a todos los usuarios con ROLE_PROFESOR
-		def listaProfesores = UsuarioRol.findAllByRol(rolProfesor)
-		
-		//3. Buscamos el objeto cursoUsuario que corresponda al Curso actual y que contenga un Profesor de la lista de profesores
-		def cursoUsuario = CursoUsuario.findByCursoAndUsuarioInList(cursoInstance, listaProfesores.usuario)
-		//def cursoUsuario = CursoUsuario.findAll("FROM CursoUsuario AS cu WHERE cu.curso = :curso AND cu.usuario IN :listaProfesores", [curso: cursoInstance, listaProfesores: listaProfesores.usuario])
-		
-		//4. Obtenemos los datos del usuario Profesor
-		def profesor = Usuario.get(cursoUsuario.usuario.id)
-		
-        respond cursoInstance, model:[
-			profe:profesor.nombre,
-			rol:rolProfesor,
-			usuarioRol: listaProfesores]
+		def cursoServicio = new CursoService()
+		   respond cursoInstance, model:[
+			cursoServicio.profesorDeCurso(cursoInstance)]
     }
 	
 
