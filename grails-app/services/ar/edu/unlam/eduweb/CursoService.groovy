@@ -17,7 +17,7 @@ class CursoService {
     }
 	
 	def profesorDeCurso(Curso cursoInstance) {
-		//1. Buscamos el registro ROLE_PROFESOR
+		//1. Buscamos el registro ROLE_PROFESOR 
 		def rolProfesor = Rol.findAllByAuthority('ROLE_PROFESOR')
 		
 		//2. Buscamos a todos los usuarios con ROLE_PROFESOR
@@ -29,7 +29,7 @@ class CursoService {
 		
 		//4. Obtenemos los datos del usuario Profesor
 		def profesor = Usuario.get(cursoUsuario.usuario.id)
-		profesor.getAuthority()
+		profesor.getRol()
 		
 		return profesor
 	}

@@ -16,13 +16,16 @@ class Usuario {
 	boolean accountLocked
 	boolean passwordExpired
 	static hasMany = [cursosUsuario:CursoUsuario, temasForo:TemaForo, comentarios:Comentario, actividades:Actividad]
+	
+	Rol rol
 
-	static transients = ['springSecurityService', 'authority']
+	static transients = ['springSecurityService', 'rol']
 
 	static constraints = { 
 		username blank: false, unique: true
 		password blank: false
-	}
+		rol bindable: true
+	} 
 
 	static mapping = {
 		password column: '`password`'
@@ -32,8 +35,8 @@ class Usuario {
 		UsuarioRol.findAllByUsuario(this).collect { it.rol }
 	}
 	
-	String getAuthority () {
-		UsuarioRol.findByUsuario(this).collect { it.rol.authority }
+	Set<Rol> getRol () {
+		UsuarioRol.findByUsuario(this).collect { it.rol }
 	}
 
 	def beforeInsert() {

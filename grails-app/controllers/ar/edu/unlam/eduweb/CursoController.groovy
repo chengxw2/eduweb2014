@@ -22,7 +22,6 @@ class CursoController {
 			 nuevoUser:cursosDelUsuario]
     }
 	
-	
 
     def show(Curso cursoInstance) {
 		   respond cursoInstance, model:[
