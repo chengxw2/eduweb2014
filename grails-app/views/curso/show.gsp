@@ -129,7 +129,7 @@
 		
 	</head>
 	<body>
-		${profe} - ${rol.authority} 
+		${profe} - ${profe.authority} 
 		<g:each in="${usuarioRol}">
     <p>Usuario: ${it.usuario.username}</p>
     <p>Rol: ${it.rol.authority}</p>

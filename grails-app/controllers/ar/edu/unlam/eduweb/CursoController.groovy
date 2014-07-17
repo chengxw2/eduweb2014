@@ -12,22 +12,21 @@ import grails.transaction.Transactional
 class CursoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-	
-	
+	def cursoService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		def cursoUsuario = new CursoService()
-		respond cursoUsuario.cursosDeUsuario(getAuthenticatedUser().username), model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
-			 nuevoUser:cursoUsuario.cursosDeUsuario(getAuthenticatedUser().username)]
+		
+		def cursosDelUsuario = cursoService.cursosDeUsuario(getAuthenticatedUser())
+		respond cursosDelUsuario, model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
+			 nuevoUser:cursosDelUsuario]
     }
 	
 	
 
     def show(Curso cursoInstance) {
-		def cursoServicio = new CursoService()
 		   respond cursoInstance, model:[
-			cursoServicio.profesorDeCurso(cursoInstance)]
+			profe: cursoService.profesorDeCurso(cursoInstance)]
     }
 	
 

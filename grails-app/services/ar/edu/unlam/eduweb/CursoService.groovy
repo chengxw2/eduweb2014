@@ -11,7 +11,7 @@ import grails.transaction.Transactional
 @Transactional
 class CursoService {
 
-    def cursosDeUsuario(String usuario) {
+    def cursosDeUsuario(Usuario usuario) {
 		return CursoUsuario.findAllByUsuario(usuario)
 
     }
@@ -29,8 +29,8 @@ class CursoService {
 		
 		//4. Obtenemos los datos del usuario Profesor
 		def profesor = Usuario.get(cursoUsuario.usuario.id)
+		profesor.getRol()
 		
-		  return profesor
-	
-		}
+		return profesor
+	}
 }

@@ -11,6 +11,8 @@ class Usuario {
 	String password
 	String email
 	
+	String authority
+	
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -30,6 +32,10 @@ class Usuario {
 
 	Set<Rol> getAuthorities() {
 		UsuarioRol.findAllByUsuario(this).collect { it.rol }
+	}
+	
+	String getRol () {
+		UsuarioRol.findByUsuario(this).collect { this.authority = it.rol.authority }
 	}
 
 	def beforeInsert() {
