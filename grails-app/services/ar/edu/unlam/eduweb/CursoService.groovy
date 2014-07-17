@@ -29,7 +29,7 @@ class CursoService {
 		
 		//4. Obtenemos los datos del usuario Profesor
 		def profesor = Usuario.get(cursoUsuario.usuario.id)
-		profesor.getRol()
+		profesor.getAuthority()
 		
 		return profesor
 	}

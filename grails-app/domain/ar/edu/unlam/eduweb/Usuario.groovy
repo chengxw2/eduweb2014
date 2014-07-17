@@ -11,15 +11,13 @@ class Usuario {
 	String password
 	String email
 	
-	String authority
-	
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
 	static hasMany = [cursosUsuario:CursoUsuario, temasForo:TemaForo, comentarios:Comentario, actividades:Actividad]
 
-	static transients = ['springSecurityService']
+	static transients = ['springSecurityService', 'authority']
 
 	static constraints = { 
 		username blank: false, unique: true
@@ -34,8 +32,8 @@ class Usuario {
 		UsuarioRol.findAllByUsuario(this).collect { it.rol }
 	}
 	
-	String getRol () {
-		UsuarioRol.findByUsuario(this).collect { this.authority = it.rol.authority }
+	String getAuthority () {
+		UsuarioRol.findByUsuario(this).collect { it.rol.authority }
 	}
 
 	def beforeInsert() {
