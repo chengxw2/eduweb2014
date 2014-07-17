@@ -21,7 +21,7 @@ class Usuario {
 
 	static transients = ['springSecurityService', 'rol']
 
-	static constraints = { 
+	static constraints = {
 		username blank: false, unique: true
 		password blank: false
 		rol bindable: true
@@ -35,8 +35,9 @@ class Usuario {
 		UsuarioRol.findAllByUsuario(this).collect { it.rol }
 	}
 	
-	Set<Rol> getRol () {
-		UsuarioRol.findByUsuario(this).collect { it.rol }
+	Rol getRol () {
+		def usuarioRol = UsuarioRol.findByUsuario(this)
+		return usuarioRol.rol
 	}
 
 	def beforeInsert() {
