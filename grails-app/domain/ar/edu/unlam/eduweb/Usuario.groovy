@@ -36,8 +36,15 @@ class Usuario {
 	}
 	
 	Rol getRol () {
-		def usuarioRol = UsuarioRol.findByUsuario(this)
-		return usuarioRol.rol
+		//AMBOS EJEMPLOS RETORNAN Set<Rol>
+		//1. Usando metodo COLLECT 
+		//UsuarioRol.findByUsuario(this).collect { it.rol }
+		
+		//2. Retornando sin RETURN
+		//def usuarioRol = UsuarioRol.findByUsuario(this)
+		//usuarioRol.rol
+		
+		UsuarioRol.findByUsuario(this).rol
 	}
 
 	def beforeInsert() {
