@@ -18,8 +18,9 @@ class Usuario {
 	static hasMany = [cursosUsuario:CursoUsuario, temasForo:TemaForo, comentarios:Comentario, actividades:Actividad]
 	
 	Rol rol
+	String nombreCompleto
 
-	static transients = ['springSecurityService', 'rol']
+	static transients = ['springSecurityService', 'rol', 'nombreCompleto']
 
 	static constraints = {
 		username blank: false, unique: true
@@ -45,6 +46,10 @@ class Usuario {
 		//usuarioRol.rol
 		
 		UsuarioRol.findByUsuario(this).rol
+	}
+	
+	String getNombreCompleto () {
+		apellido + ', ' + nombre
 	}
 
 	def beforeInsert() {
