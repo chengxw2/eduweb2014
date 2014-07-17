@@ -151,6 +151,8 @@
 				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					   <td><g:link action="show" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
+					   
+					   <td>${fieldValue(bean: cursoInstance.usuario, field: "username")}</td>
 					</tr>
 				</g:each>
 				</tbody>

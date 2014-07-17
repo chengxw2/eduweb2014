@@ -12,7 +12,19 @@ import grails.transaction.Transactional
 class CursoService {
 
     def cursosDeUsuario(Usuario usuario) {
-		return CursoUsuario.findAllByUsuario(usuario)
+		//1. Buscamos los cursos del alumno logueado
+		def listaCursoAlumno = CursoUsuario.findAllByUsuario(usuario)
+		
+		//1. Buscamos el registro ROLE_PROFESOR
+		def rolProfesor = Rol.findAllByAuthority('ROLE_PROFESOR')
+		
+		//2. Buscamos a todos los usuarios con ROLE_PROFESOR
+		def listaProfesores = UsuarioRol.findAllByRol(rolProfesor)
+		
+		//3. Buscamos el objeto cursoUsuario que corresponda al la lista de cursos del alumno
+		// y que contenga un Profesor de la lista de profesores
+		def cursoUsuario = CursoUsuario.findAllByCursoInListAndUsuarioInList(listaCursoAlumno.curso, listaProfesores.usuario)
+		return cursoUsuario
 
     }
 	
