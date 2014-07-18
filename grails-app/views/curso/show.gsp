@@ -142,34 +142,12 @@
 			</ul>
 		</div>
 		<div id="show-curso" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label.curso" args="[entityName, cursoInstance.nombre, profe.nombreCompleto]" /></h1>
+			<h1><g:message code="default.show.label.curso" args="[entityName, cursoInstance.nombre]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${cursoInstance.nombre}</div>
 			</g:if>
 			<ol class="property-list curso">
-			
-				<g:if test="${cursoInstance?.actividades}">
-				<li class="fieldcontain">
-					<span id="actividades-label" class="property-label"><g:message code="curso.actividades.label" default="Actividades" /></span>
-					
-						<g:each in="${cursoInstance.actividades}" var="a">
-						<span class="property-value" aria-labelledby="actividades-label"><g:link controller="actividad" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cursoInstance?.cursoUsuarios}">
-				<li class="fieldcontain">
-					<span id="cursousuarios-label" class="property-label"><g:message code="curso.cursousuarios.label" default="Cursousuarios" /></span>
-					
-						<g:each in="${cursoInstance.cursoUsuarios}" var="c">
-						<span class="property-value" aria-labelledby="cursousuarios-label"><g:link controller="cursoUsuario" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
+							
 				<g:if test="${cursoInstance?.eventos}">
 				<li class="fieldcontain">
 					<span id="eventos-label" class="property-label"><g:message code="curso.eventos.label" default="Eventos" /></span>
@@ -186,6 +164,66 @@
 					<span id="nombre-label" class="property-label"><g:message code="curso.nombre.label" default="Nombre" /></span>
 					
 						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${cursoInstance}" field="nombre"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${profe?.nombreCompleto}">
+				<li class="fieldcontain">
+					<span id="nombreCompleto-label" class="property-label"><g:message code="usuario.nombreCompleto.label" default="Docente a cargo" /></span>
+					
+						<span class="property-value" aria-labelledby="nombreCompleto-label"><g:fieldValue bean="${profe}" field="nombreCompleto"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${cursoInstance?.descripcion}">
+				<li class="fieldcontain">
+					<span id="nombre-label" class="property-label"><g:message code="curso.descripcion.label" default="Descripcion" /></span>
+					
+						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${cursoInstance}" field="descripcion"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${cursoInstance?.actividades}">
+				<li class="fieldcontain">
+					<span id="actividades-label" class="property-label"><g:message code="curso.actividades.label" default="Actividades" /></span>
+					
+						<g:each in="${cursoInstance.actividades}" var="a">
+						<span class="property-value" aria-labelledby="actividades-label"><g:link controller="actividad" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${cursoInstance?.apuntes}">
+				<li class="fieldcontain">
+					<span id="apuntes-label" class="property-label"><g:message code="curso.apuntes.label" default="Apuntes" /></span>
+					
+					<div id="page-body-curso" role="main">
+						<table>
+							<thead>
+								<tr>
+									<th>
+										Nombre
+									</th>
+									<th>
+										Fecha Subida
+									</th>
+								<tr>
+							</thead>
+							<tbody>
+								<g:each in="${cursoInstance.apuntes}" var="a">
+									<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+										<td>${fieldValue(bean: cursoInstance.apuntes, field: "nombre")}</td>
+										
+										<td>${fieldValue(bean: cursoInstance.apuntes, field: "fecha")}</td>
+									</tr>
+								</g:each>
+							</tbody>
+						</table>
+					</div>
 					
 				</li>
 				</g:if>

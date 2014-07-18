@@ -25,7 +25,7 @@ class Usuario {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		rol bindable: true
+		//rol bindable: true
 	} 
 
 	static mapping = {
