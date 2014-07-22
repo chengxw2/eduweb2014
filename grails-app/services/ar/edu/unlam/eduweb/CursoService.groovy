@@ -21,8 +21,7 @@ class CursoService {
 		//2. Buscamos a todos los usuarios con ROLE_PROFESOR
 		def listaProfesores = UsuarioRol.findAllByRol(rolProfesor)
 		
-		//3. Buscamos el objeto cursoUsuario que corresponda al la lista de cursos del alumno
-		// y que contenga un Profesor de la lista de profesores
+		//3. Buscamos los objetos cursoUsuario que corresponda a la lista de cursos del alumno
 		def cursoUsuario = CursoUsuario.findAllByCursoInListAndUsuarioInList(listaCursoAlumno.curso, listaProfesores.usuario)
 		return cursoUsuario
 
