@@ -41,7 +41,7 @@
              }
              
              #status a{
-             background-image:url('../images/menu.png');
+             background-image:url('../../images/menu.png');
              width:315px;
              height:38px;
              text-decoration:none;

@@ -18,14 +18,13 @@ class Usuario {
 	static hasMany = [cursosUsuario:CursoUsuario, temasForo:TemaForo, comentarios:Comentario, actividades:Actividad]
 	
 	Rol rol
-	String nombreCompleto
 
-	static transients = ['springSecurityService', 'rol', 'nombreCompleto']
+	static transients = ['springSecurityService', 'rol']
 
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		rol bindable: true
+		
 	} 
 
 	static mapping = {
@@ -47,6 +46,7 @@ class Usuario {
 		
 		UsuarioRol.findByUsuario(this).rol
 	}
+	
 	
 	String getNombreCompleto () {
 		apellido + ', ' + nombre

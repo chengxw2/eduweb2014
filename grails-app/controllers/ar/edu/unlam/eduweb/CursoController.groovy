@@ -22,6 +22,14 @@ class CursoController {
 			 nuevoUser:cursosDelUsuario]
     }
 	
+	def curso(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		
+		def cursosDelUsuario = cursoService.cursosDeUsuario(getAuthenticatedUser())
+		respond cursosDelUsuario, model:[cursoUsuarioInstanceCount: CursoUsuario.count(),
+			 nuevoUser:cursosDelUsuario]
+	}
+	
 
     def show(Curso cursoInstance) {
 		   respond cursoInstance, model:[

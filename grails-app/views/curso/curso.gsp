@@ -1,8 +1,11 @@
+
+<%@ page import="ar.edu.unlam.eduweb.Curso" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${nuevoUser.usuario.username}" />
+		<title><g:message code="default.list.label" args="[entityName]" /></title>
 		<style type="text/css" media="screen">
 		  .texto_principal{
 				width:500px;;
@@ -38,7 +41,7 @@
              }
              
              #status a{
-             background-image:url('images/menu.png');
+             background-image:url('../images/menu.png');
              width:315px;
              height:38px;
              text-decoration:none;
@@ -69,8 +72,18 @@
 				margin: 0 0 0.3em;
 			}
 
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
+			#page-body-curso {
+				margin: 2em 1em 1.25em 28em;
+				
+			}
+			
+			#page-body-curso  h1{
+			 color:#2E9AFE;
+			}
+			
+			#page-body-curso a{
+			text-decoration:none;
+			color:#000000;
 			}
 
 			h2 {
@@ -99,49 +112,56 @@
 					display: none;
 				}
 
-				#page-body {
+				#page-body-curso {
 					margin: 0 1em 1em;
+					width:500px;
 				}
 
-				#page-body h1 {
+				#page-body-curso h1 {
 					margin-top: 0;
+					color:#fffff;
 				}
-			}
+				
+				#page-body-curso table tbody tr td a {
+				text-decoration:none;
+				}
+				
+			
 		</style>
 	</head>
 	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	    <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
-			 <a href="${createLink(controller:'curso', action: 'curso')}" >Foro</a>
+		    <a href="#" >Curso </a>
+			<a href="#">Foro</a>
 			<a href="#">Chat</a>
-			<img src='images/chicos2.png' width='321' height='115'/>
+				 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
 		</div>
 		
-		<div id="page-body" role="main">
-		     <div class='texto_principal'>
-			 <sec:ifLoggedIn>
-			<h1>Bienvenido:</h1>
-			<h1> ${applicationContext.springSecurityService.currentUser.username}</h1>
-             </sec:ifLoggedIn>
-             <img src='images/computadora2.png' width='321' height='115'/>
-			<p>Lorem Ipsum is simply dummy text of the printing 
-	        and typesetting industry. Lorem Ipsum has been the 
-	        industry's standard dummy text ever since the 1500s,
-	        when an unknown printer took a galley </p>
-	        <p>Lorem Ipsum is simply dummy text of the printing 
-	        and typesetting industry. Lorem Ipsum has been the 
-	        industry's standard dummy text ever since the 1500s,
-	        when an unknown printer took a galley </p>
-            </div>
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
+		<a href="#list-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+			</ul>
 		</div>
+		<div id="page-body-curso" role="main">
+	      <h1>${nuevoUser.curso.cantidadTemas}/h1>
+	      <table>
+			  <tbody>
+				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					   <td><g:link action="show" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
+					   
+					   <td>${fieldValue(bean: cursoInstance.usuario, field: "username")}</td>
+					   <td>${cursoInstance.curso.cantidadTemas}</td>
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+			
+			</div>
+			<div class="pagination">
+				<g:paginate total="${cursoInstanceCount ?: 0}" />
+			</div>
 	</body>
 </html>

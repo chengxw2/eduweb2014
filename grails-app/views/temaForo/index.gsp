@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="temaForo.autorTema.label" default="Autor Tema" /></th>
+						
 					
 						<th><g:message code="temaForo.categoriaForo.label" default="Categoria Foro" /></th>
 					
@@ -40,9 +40,9 @@
 				<g:each in="${temaForoInstanceList}" status="i" var="temaForoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${temaForoInstance.id}">${fieldValue(bean: temaForoInstance, field: "autorTema")}</g:link></td>
+						
 					
-						<td>${fieldValue(bean: temaForoInstance, field: "categoriaForo")}</td>
+						<td>${fieldValue(bean: temaForoInstance.curso, field: "nombre")}</td>
 					
 						<td><g:formatDate date="${temaForoInstance.fecha}" /></td>
 					
