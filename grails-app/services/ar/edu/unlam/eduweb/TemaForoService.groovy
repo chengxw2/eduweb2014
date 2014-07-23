@@ -5,16 +5,10 @@ import grails.transaction.Transactional
 @Transactional
 class TemaForoService {
 
-    def temasAbiertosDeForo() {
-		TemaForo.list()
+    def temasAbiertosDeCurso(Curso cursoInstance) {
+		TemaForo.findAllByCursoAndBloqueado(cursoInstance,false)
 
     }
 	
-	def temasDeCurso() {
 	
-		}
-	
-	def mostrarTema() {
-	
-		}
 }

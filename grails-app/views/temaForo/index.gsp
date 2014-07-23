@@ -37,7 +37,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${temaForoInstanceList}" status="i" var="temaForoInstance">
+				<g:each in="${listaForo}" status="i" var="temaForoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						

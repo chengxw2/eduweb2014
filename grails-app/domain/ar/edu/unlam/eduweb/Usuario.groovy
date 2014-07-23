@@ -24,12 +24,10 @@ class Usuario {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-<<<<<<< HEAD
-		
-=======
+
 		//rol bindable: true
->>>>>>> 89eb2ab5ddb663b1b507d3b60d2a64cf3b9248e4
-	} 
+	}
+ 
 
 	static mapping = {
 		password column: '`password`'

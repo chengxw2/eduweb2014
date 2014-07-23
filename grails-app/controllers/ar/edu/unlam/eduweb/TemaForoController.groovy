@@ -12,9 +12,10 @@ class TemaForoController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	def temaForoService
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-		def temasForo= temaForoService.temasAbiertosDeForo()
+
+    def index(Curso cursoInstance) {
+       
+		def temasForo= temaForoService.temasAbiertosDeCurso(cursoInstance)
 	    respond temasForo, model:[temaForoInstanceCount: TemaForo.count(),
 			 listaForo:temasForo]
     }

@@ -36,6 +36,7 @@ class CursoController {
 			profe: cursoService.profesorDeCurso(cursoInstance)]
     }
 	
+	
 
     def create() {
         respond new Curso(params)

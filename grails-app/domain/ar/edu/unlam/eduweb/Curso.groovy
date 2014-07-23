@@ -13,6 +13,5 @@ class Curso {
 	int getCantidadTemas(){
 		 TemaForo.findAllByCursoAndBloqueado(this,false).size()
 		
-		
-	}
+    }
 }

@@ -132,7 +132,7 @@
 	<body>
 	    <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-		    <a href="#" >Curso </a>
+		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
 				 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
@@ -145,12 +145,12 @@
 			</ul>
 		</div>
 		<div id="page-body-curso" role="main">
-	      <h1>${nuevoUser.curso.cantidadTemas}/h1>
+	      <h1>Foros</h1>
 	      <table>
 			  <tbody>
 				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					   <td><g:link action="show" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
+					   <td><g:link controller="TemaForo" action="index" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
 					   
 					   <td>${fieldValue(bean: cursoInstance.usuario, field: "username")}</td>
 					   <td>${cursoInstance.curso.cantidadTemas}</td>
