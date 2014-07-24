@@ -1,10 +1,10 @@
 
-<%@ page import="ar.edu.unlam.eduweb.TemaForo" %>
+<%@ page import="ar.edu.unlam.eduweb.Curso" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'temaForo.label', default: 'TemaForo')}" />
+		<g:set var="entityName" value="${nuevoUser.usuario.username}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 		<style type="text/css" media="screen">
 		  .texto_principal{
@@ -41,7 +41,7 @@
              }
              
              #status a{
-             background-image:url('../../images/menu.png');
+             background-image:url('../images/menu.png');
              width:315px;
              height:38px;
              text-decoration:none;
@@ -72,16 +72,16 @@
 				margin: 0 0 0.3em;
 			}
 
-			#page-body-foro {
+			#page-body-curso {
 				margin: 2em 1em 1.25em 28em;
 				
 			}
 			
-			#page-body-foro h1{
+			#page-body-curso  h1{
 			 color:#2E9AFE;
 			}
 			
-			#page-body-foro a{
+			#page-body-curso a{
 			text-decoration:none;
 			color:#000000;
 			}
@@ -112,17 +112,17 @@
 					display: none;
 				}
 
-				#page-body-foro {
+				#page-body-curso {
 					margin: 0 1em 1em;
 					width:500px;
 				}
 
-				#page-body-foro h1 {
+				#page-body-curso h1 {
 					margin-top: 0;
 					color:#fffff;
 				}
 				
-				#page-body-foro table tbody tr td a {
+				#page-body-curso table tbody tr td a {
 				text-decoration:none;
 				}
 				
@@ -130,53 +130,47 @@
 		</style>
 	</head>
 	<body>
-	    
+	    <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
 		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
 			<img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
 		</div>
-		<a href="#list-temaForo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		
+		<a href="#list-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 			</ul>
 		</div>
-		<div id="list-temaForo" class="content scaffold-list" role="main">
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-		  <div id="page-body-foro" role="main">
-	      <h1>Tema Foro</h1>
-			<table>
-			<thead>
+		<div id="page-body-curso" role="main">
+	      <h1>Foros</h1>
+	      <table>
+	         <thead>
 					<tr>
-					    <g:sortableColumn property="titulo" title="${message(code: 'temaForo.titulo.label', default: 'Titulo')}" />
-					    <g:sortableColumn property="fecha" title="${message(code: 'temaForo.fecha.label', default: 'Fecha')}" />
+					   <g:sortableColumn property="fecha" title="${message(code: 'temaForo.curso.label', default: 'Curso')}" />
 					
-						<g:sortableColumn property="mensaje" title="${message(code: 'temaForo.mensaje.label', default: 'Respuestas')}" />
+						<g:sortableColumn property="mensaje" title="${message(code: 'temaForo.mensaje.label', default: 'Profesor')}" />
 					
-						
+						<g:sortableColumn property="titulo" title="${message(code: 'temaForo.titulo.label', default: 'Temas abiertos')}" />
 					
 					</tr>
 				</thead>
-				<tbody>
-				<g:each in="${listaForo}" status="i" var="temaForoInstance">
+			  <tbody>
+				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					    <td>${fieldValue(bean: temaForoInstance, field: "titulo")}</td>
-					
-						<td><g:formatDate date="${temaForoInstance.fecha}" /></td>
-					
-						<td>${temaForoInstance.cantidadComentarios}</td>
+					   <td><g:link controller="TemaForo" action="index" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
+					   <td>${fieldValue(bean: cursoInstance.usuario, field: "username")}</td>
+					   <td>${cursoInstance.curso.cantidadTemas}</td>
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
+			
 			</div>
 			<div class="pagination">
-				<g:paginate total="${temaForoInstanceCount ?: 0}" />
+				<g:paginate total="${cursoInstanceCount ?: 0}" />
 			</div>
-		</div>
 	</body>
 </html>

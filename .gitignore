@@ -1,7 +1,7 @@
 .settings
 stacktrace.log
-/*.zip
-/*.log
-/*Db.*
-/target/
-/target-eclipse/
+*.zip
+*.log
+*Db.*
+target/
+target-eclipse/

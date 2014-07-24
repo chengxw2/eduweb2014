@@ -13,4 +13,8 @@ class TemaForo {
 
     static constraints = {
     }
+	
+	int getCantidadComentarios(){
+		 Comentario.findAllByTemaForo(this).size()
+    }
 }

@@ -1,18 +1,23 @@
 package ar.edu.unlam.eduweb
 
-
+import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+@Secured(['ROLE_ALUMNO'])
 @Transactional(readOnly = true)
 class TemaForoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	def temaForoService
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond TemaForo.list(params), model:[temaForoInstanceCount: TemaForo.count()]
+
+    def index(Curso cursoInstance) {
+       
+		def temasForo= temaForoService.temasAbiertosDeCurso(cursoInstance)
+	    respond temasForo, model:[temaForoInstanceCount: TemaForo.count(),
+			 listaForo:temasForo]
     }
 
     def show(TemaForo temaForoInstance) {

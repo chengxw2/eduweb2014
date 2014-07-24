@@ -5,6 +5,13 @@ class Curso {
 	String descripcion;
 	static hasMany = [temasForo:TemaForo, cursoUsuarios:CursoUsuario, eventos: Evento, actividades: Actividad, apuntes: Apunte]
 
+
+	
     static constraints = {
+    }
+	
+	int getCantidadTemas(){
+		 TemaForo.findAllByCursoAndBloqueado(this,false).size()
+		
     }
 }
