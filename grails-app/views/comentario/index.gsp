@@ -33,14 +33,14 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${comentarioInstanceList}" status="i" var="comentarioInstance">
+				<g:each in="${listaComentario}" status="i" var="comentarioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${comentarioInstance.id}">${fieldValue(bean: comentarioInstance, field: "autorComentario")}</g:link></td>
+						<td><g:link action="show" id="${comentarioInstance.id}">${fieldValue(bean: comentarioInstance.temaForo, field: "titulo")}</g:link></td>
 					
-						<td><g:formatDate date="${comentarioInstance.fechaComentario}" /></td>
+						<td><g:formatDate date="${comentarioInstance.fecha}" /></td>
 					
-						<td>${fieldValue(bean: comentarioInstance, field: "mensajeComentario")}</td>
+						<td>${fieldValue(bean: comentarioInstance, field: "mensaje")}</td>
 					
 					</tr>
 				</g:each>

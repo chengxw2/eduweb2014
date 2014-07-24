@@ -10,5 +10,10 @@ class TemaForoService {
 
     }
 	
+	def comentariosDeTema(TemaForo temaForoInstance) {
+		Comentario.findAllByTemaForo(temaForoInstance)
+
+	}
+	
 	
 }

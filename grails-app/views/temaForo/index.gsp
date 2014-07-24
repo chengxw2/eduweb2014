@@ -164,6 +164,7 @@
 				<tbody>
 				<g:each in="${listaForo}" status="i" var="temaForoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					 <td><g:link controller="Comentario" action="index" id="${temaForoInstance.id}">${fieldValue(bean: temaForoInstance, field: "titulo")}</g:link></td>
 					    <td>${fieldValue(bean: temaForoInstance, field: "titulo")}</td>
 					
 						<td><g:formatDate date="${temaForoInstance.fecha}" /></td>

@@ -2,7 +2,7 @@ package ar.edu.unlam.eduweb
 
 
 class Actividad {
-	static belongsTo = [curso: Curso]
+	static belongsTo = [curso:Curso]
 	Date fechaInicio
 	Date fechaEntrega
 	String titulo
