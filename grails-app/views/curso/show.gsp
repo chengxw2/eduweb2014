@@ -158,6 +158,8 @@
 					
 				</li>
 				</g:if>
+				
+
 			
 				<g:if test="${cursoInstance?.nombre}">
 				<li class="fieldcontain">
@@ -186,16 +188,7 @@
 				</li>
 				</g:if>
 				
-				<g:if test="${cursoInstance?.actividades}">
-				<li class="fieldcontain">
-					<span id="actividades-label" class="property-label"><g:message code="curso.actividades.label" default="Actividades" /></span>
-					
-						<g:each in="${cursoInstance.actividades}" var="a">
-						<span class="property-value" aria-labelledby="actividades-label"><g:link controller="actividad" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+				
 				
 				<g:if test="${cursoInstance?.apuntes}">
 				<li class="fieldcontain">

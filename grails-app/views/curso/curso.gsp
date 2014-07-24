@@ -135,7 +135,7 @@
 		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
 			<a href="#">Foro</a>
 			<a href="#">Chat</a>
-				 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
+			<img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
 		</div>
 		
 		<a href="#list-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -147,11 +147,20 @@
 		<div id="page-body-curso" role="main">
 	      <h1>Foros</h1>
 	      <table>
+	         <thead>
+					<tr>
+					   <g:sortableColumn property="fecha" title="${message(code: 'temaForo.curso.label', default: 'Curso')}" />
+					
+						<g:sortableColumn property="mensaje" title="${message(code: 'temaForo.mensaje.label', default: 'Profesor')}" />
+					
+						<g:sortableColumn property="titulo" title="${message(code: 'temaForo.titulo.label', default: 'Temas abiertos')}" />
+					
+					</tr>
+				</thead>
 			  <tbody>
 				<g:each in="${nuevoUser}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					   <td><g:link controller="TemaForo" action="index" id="${cursoInstance.curso.id}">${fieldValue(bean: cursoInstance.curso, field: "nombre")}</g:link></td>
-					   
 					   <td>${fieldValue(bean: cursoInstance.usuario, field: "username")}</td>
 					   <td>${cursoInstance.curso.cantidadTemas}</td>
 					</tr>
