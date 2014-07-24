@@ -45,6 +45,9 @@ class CursoService {
 		return profesor
 	}
 	
+	def listaActividadesCurso(Curso cursoInstance){
+		Actividad.findAllByCurso(cursoInstance)
+	}
 	
 	
 }

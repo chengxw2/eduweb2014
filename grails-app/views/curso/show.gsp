@@ -189,6 +189,14 @@
 				</g:if>
 				
 				
+					
+					<g:each in="${listaActividades}" var="a">
+					<span class="property-value" aria-labelledby="listaActividades-label"><g:link controller="actividad" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+					</g:each>
+					
+			
+				
+				
 				
 				<g:if test="${cursoInstance?.apuntes}">
 				<li class="fieldcontain">

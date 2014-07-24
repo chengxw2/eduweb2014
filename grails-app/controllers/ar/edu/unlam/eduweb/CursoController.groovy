@@ -33,7 +33,8 @@ class CursoController {
 
     def show(Curso cursoInstance) {
 		   respond cursoInstance, model:[
-			profe: cursoService.profesorDeCurso(cursoInstance)]
+			profe: cursoService.profesorDeCurso(cursoInstance),
+			listaActividades: cursoService.listaActividadesCurso(cursoInstance)]
     }
 	
 	
