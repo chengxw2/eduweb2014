@@ -132,7 +132,7 @@
 		<a href="#show-curso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
 		    <a href="${createLink(controller:'curso', action: 'index')}" >Curso </a>
-			<a href="#">Foro</a>
+			 <a href="${createLink(controller:'curso', action: 'curso')}" >Foro</a>
 			<a href="#">Chat</a>
 			 <img id='chicos2' src="${resource(dir: 'images', file: 'chicos2.png')}" alt="Grails"/>
 		</div>
@@ -187,18 +187,6 @@
 					
 				</li>
 				</g:if>
-				
-				
-					
-					
-<g:each in="${listaActividades}">
-    <p>Title: ${it.titulo}</p>
-    <p>Author: ${it.mensaje}</p>
-</g:each>
-					
-			
-				
-				
 				
 				<g:if test="${cursoInstance?.apuntes}">
 				<li class="fieldcontain">

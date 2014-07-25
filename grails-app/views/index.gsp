@@ -77,6 +77,7 @@
 				margin-top: 1em;
 				margin-bottom: 0.3em;
 				font-size: 1em;
+				visibility:hidden;
 			}
 
 			p {
@@ -86,12 +87,14 @@
 
 			#controller-list ul {
 				list-style-position: inside;
+				visibility:hidden;
 			}
 
 			#controller-list li {
 				line-height: 1.3;
 				list-style-position: inside;
 				margin: 0.25em 0;
+				visibility:hidden;
 			}
 
 			@media screen and (max-width: 480px) {
@@ -125,14 +128,17 @@
 			<h1> ${applicationContext.springSecurityService.currentUser.username}</h1>
              </sec:ifLoggedIn>
              <img src='images/computadora2.png' width='321' height='115'/>
-			<p>Lorem Ipsum is simply dummy text of the printing 
-	        and typesetting industry. Lorem Ipsum has been the 
-	        industry's standard dummy text ever since the 1500s,
-	        when an unknown printer took a galley </p>
-	        <p>Lorem Ipsum is simply dummy text of the printing 
-	        and typesetting industry. Lorem Ipsum has been the 
-	        industry's standard dummy text ever since the 1500s,
-	        when an unknown printer took a galley </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mi turpis, 
+			adipiscing in ante quis, mattis gravida ligula. Aliquam aliquam metus neque, 
+			ac malesuada magna viverra in. Fusce eleifend pulvinar lorem, nec consectetur 
+			tellus convallis tincidunt. Nam suscipit eros eget tortor faucibus ultricies.
+			Vivamus pellentesque et nisi id ultricies. Etiam quis erat eu magna luctus 
+			auctor. Nam velit enim, mattis a orci at, venenatis dictum dui. Praesent
+			non mauris vestibulum, ultrices metus a, congue quam. Suspendisse potenti.
+			Nunc sit amet bibendum nulla. Etiam nibh lorem, aliquet adipiscing lorem 
+			aliquet, tincidunt bibendum orci. Vivamus pellentesque, magna condimentum
+			sollicitudin fringilla, justo velit tincidunt mauris, eu elementum metus
+			nulla sit amet neque.  </p>
             </div>
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
