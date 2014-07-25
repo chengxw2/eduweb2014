@@ -193,7 +193,7 @@
 					
 <g:each in="${listaActividades}">
     <p>Title: ${it.titulo}</p>
-    <p>Author: ${it.consigna}</p>
+    <p>Author: ${it.mensaje}</p>
 </g:each>
 					
 			
