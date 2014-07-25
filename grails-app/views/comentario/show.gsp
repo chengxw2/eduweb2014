@@ -23,29 +23,29 @@
 			</g:if>
 			<ol class="property-list comentario">
 			
-				<g:if test="${comentarioInstance?.autorComentario}">
+				<g:if test="${comentarioInstance?.autor}">
 				<li class="fieldcontain">
 					<span id="autorComentario-label" class="property-label"><g:message code="comentario.autorComentario.label" default="Autor Comentario" /></span>
 					
-						<span class="property-value" aria-labelledby="autorComentario-label"><g:link controller="usuario" action="show" id="${comentarioInstance?.autorComentario?.id}">${comentarioInstance?.autorComentario?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="autorComentario-label"><g:link controller="usuario" action="show" id="${comentarioInstance?.autor?.id}">${comentarioInstance?.autor?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${comentarioInstance?.fechaComentario}">
+				<g:if test="${comentarioInstance?.fecha}">
 				<li class="fieldcontain">
 					<span id="fechaComentario-label" class="property-label"><g:message code="comentario.fechaComentario.label" default="Fecha Comentario" /></span>
 					
-						<span class="property-value" aria-labelledby="fechaComentario-label"><g:formatDate date="${comentarioInstance?.fechaComentario}" /></span>
+						<span class="property-value" aria-labelledby="fechaComentario-label"><g:formatDate date="${comentarioInstance?.fecha}" /></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${comentarioInstance?.mensajeComentario}">
+				<g:if test="${comentarioInstance?.mensaje}">
 				<li class="fieldcontain">
 					<span id="mensajeComentario-label" class="property-label"><g:message code="comentario.mensajeComentario.label" default="Mensaje Comentario" /></span>
 					
-						<span class="property-value" aria-labelledby="mensajeComentario-label"><g:fieldValue bean="${comentarioInstance}" field="mensajeComentario"/></span>
+						<span class="property-value" aria-labelledby="mensajeComentario-label"><g:fieldValue bean="${comentarioInstance}" field="mensaje"/></span>
 					
 				</li>
 				</g:if>

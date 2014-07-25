@@ -45,7 +45,7 @@
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${usuarioInstance?.cursousuarios?}" var="c">
+<g:each in="${usuarioInstance?.cursosUsuario?}" var="c">
     <li><g:link controller="cursoUsuario" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

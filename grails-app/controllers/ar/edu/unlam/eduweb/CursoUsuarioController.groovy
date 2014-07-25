@@ -1,10 +1,11 @@
 package ar.edu.unlam.eduweb
 
 
-
+import grails.plugin.springsecurity.annotation.Secured
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
+import grails.transaction.Transactional
+@Secured(['ROLE_ALUMNO'])
 @Transactional(readOnly = true)
 class CursoUsuarioController {
 
