@@ -219,16 +219,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cursoInstance?.temasForo}">
-				<li class="fieldcontain">
-					<span id="temasforo-label" class="property-label"><g:message code="curso.temasforo.label" default="Temasforo" /></span>
-					
-						<g:each in="${cursoInstance.temasForo}" var="t">
-						<span class="property-value" aria-labelledby="temasforo-label"><g:link controller="temaForo" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+				
 			
 			</ol>
 		</div>

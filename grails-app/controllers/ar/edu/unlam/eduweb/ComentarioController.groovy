@@ -17,15 +17,18 @@ class ComentarioController {
 		def comentario = temaForoService.comentariosDeTema(temaForoInstance)
        
         respond comentario, model:[comentarioInstanceCount: Comentario.count(),
-			 listaComentario: comentario]
+			 listaComentario: comentario,
+			 temaForo: temaForoInstance]
     }
 
     def show(Comentario comentarioInstance) {
         respond comentarioInstance
     }
 
-    def create() {
-        respond new Comentario(params)
+    def create(int temaForo) {
+		def objTemaForo = TemaForo.get(temaForo)
+		def usuario = Usuario.get(getAuthenticatedUser().id)
+        respond new Comentario(params), model: [temaForo: objTemaForo, usuario: usuario]
     }
 
     @Transactional

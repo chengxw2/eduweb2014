@@ -17,11 +17,26 @@
 		<g:layoutHead/>
 		<g:javascript library="application"/>		
 		<r:layoutResources />
+		<style type="text/css" media="screen">
+		.logout{
+		width: 90px;
+		height:30px;
+		float:right;
+		text-decoration:none;
+		color:white;
+		margin-left:400px;
+		margin-top:-35px;
+		text-align: center;
+		background-color:#ffffff ;
+		border:1px solid #BDBDBD;
+		}
+		</style>
 	</head>
 	<body>
 	    <div id="grailsLogo" role="banner">
         <img id='logo' src="${resource(dir: 'images', file: 'logotipo.png')}" alt="Grails"/>
         <img id='cuadradito' src="${resource(dir: 'images', file: 'cuadradito_arriba.png')}" alt="Grails"/>
+        <g:remoteLink class="logout" controller="logout">${message(code: 'Logout')}</g:remoteLink>
         </div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

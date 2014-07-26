@@ -153,14 +153,25 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:comentarioInstance, action:'save']" >
+			<form action="${createLink(controller: 'comentario', action: 'save')}" url="[resource:comentarioInstance, action:'save']" method="post" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<div class="fieldcontain">
+						<label>
+							TemaForo
+						</label>
+						<input type="text" id="temaForo" readonly value="${temaForo.titulo}"/>
+					</div>
+					<div class="fieldcontain">
+						<label>
+							Autor Comentario
+						</label>
+						<input type="text" id="usuario" readonly value="${usuario.nombreCompleto}"/>
+					</div>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
-			</g:form>
+			</form>
 		</div>
 	</body>
 </html>
