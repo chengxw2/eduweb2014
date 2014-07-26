@@ -121,6 +121,8 @@
 			<img src='images/chicos2.png' width='321' height='115'/>
 		</div>
 		
+ 
+		
 		<div id="page-body" role="main">
 		     <div class='texto_principal'>
 			 <sec:ifLoggedIn>

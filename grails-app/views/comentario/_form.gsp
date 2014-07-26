@@ -7,13 +7,13 @@
 </label>
 <g:select id="temaForo" name="temaForo.id" from="${ar.edu.unlam.eduweb.TemaForo.list()}" optionKey="id" required="" value="${comentarioInstance?.temaForo?.id}" class="many-to-one"/>
 
-
 <div class="fieldcontain ${hasErrors(bean: comentarioInstance, field: 'autor', 'error')} required">
+<g:set var="autor" value="ar.edu.unlam.eduweb.Usuario: ${applicationContext.springSecurityService.currentUser.id}" />
 <label for="autorComentario">
 <g:message code="comentario.autorComentario.label" default="Autor" />
 <span class="required-indicator">*</span>
 </label>
-<g:select id="autor" name="autor.id" from="${ar.edu.unlam.eduweb.Usuario.list()}" optionKey="id" required="" value="${comentarioInstance?.autor?.id}" class="many-to-one"/>
+<g:select id="autor" name="autor.id" from="${ar.edu.unlam.eduweb.Usuario.list()}"  optionKey="id" required="" value="${comentarioInstance?.autor?.id}" class="many-to-one"/>
 
 </div>
 
